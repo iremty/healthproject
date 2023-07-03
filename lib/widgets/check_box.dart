@@ -18,10 +18,10 @@ class _CheckBoxState extends State<CheckBox_> {
           CheckboxListTile(
               title: Text(
                 "Aydınlatma Metnini okudum, onayladım.",
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
               checkColor: Colors.white,
               activeColor: Colors.black,
-              tileColor: Colors.grey[600]?.withOpacity(0.5),
               value: global.durum,
               shape: StadiumBorder(),
               controlAffinity: ListTileControlAffinity.leading,
@@ -31,10 +31,9 @@ class _CheckBoxState extends State<CheckBox_> {
                 });
               }),
           CheckboxListTile(
-              title: Text("Açık Rıza Beyanını okudum, onayladım."),
+              title: Text("Açık Rıza Beyanını okudum, onayladım.", style: TextStyle(fontWeight: FontWeight.bold),),
               checkColor: Colors.white,
               activeColor: Colors.black,
-              tileColor: Colors.grey[600]?.withOpacity(0.5),
               shape: StadiumBorder(),
               value: global.durum2,
               controlAffinity: ListTileControlAffinity.leading,
@@ -42,7 +41,7 @@ class _CheckBoxState extends State<CheckBox_> {
                 setState(() {
                   global.durum2 = veri!;
                 });
-              })
+              }),
         ],
       ),
     );

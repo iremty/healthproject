@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:healthproject/colors.dart';
 import 'package:healthproject/global.dart' as global;
@@ -126,6 +127,9 @@ class _LoginPageState extends State<LoginPage> {
                             borderRadius: BorderRadius.circular(16)),
                         child: TextButton(
                           onPressed: () {
+                            FirebaseFirestore firestore = FirebaseFirestore.instance;
+                            CollectionReference testCollectionRef = FirebaseFirestore.instance.collection('testCollection');
+                            testCollectionRef.add({"test":10});
                             if (_name == 'kp' && _password == '1234') {
                               print('assdf');
                               if (global.durum == true) {

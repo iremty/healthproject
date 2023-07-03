@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "544874084708",
+    "project_id": "mediconn-e3239",
+    "storage_bucket": "mediconn-e3239.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544874084708:android:0013f2a6608a545a392271",
+        "android_client_info": {
+          "package_name": "com.example.healthproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "544874084708-o3d0r2vadrv9n7dcnkgc4q91bcmriuhj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.healthproject",
+            "certificate_hash": "e57e9e074eb58c295f02a1788cb50e54efb0aaa1"
+          }
+        },
+        {
+          "client_id": "544874084708-p86dam5b9g4jhoj5mjhk08uovbu8br4e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhP3bGZBH4_tL4Zt8lV_w0KHfkK72J5b4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "544874084708-p86dam5b9g4jhoj5mjhk08uovbu8br4e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
