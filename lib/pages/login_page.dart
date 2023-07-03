@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:healthproject/colors.dart';
-import 'package:healthproject/pages/first_page.dart';
-import "../widgets/widgets.dart";
-import '../widgets/check_box.dart';
-import '/widgets/text_input.dart';
-import '/widgets/password_input.dart';
+import 'package:healthproject/global.dart' as global;
 
+import '../widgets/check_box.dart';
+import "../widgets/widgets.dart";
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -15,11 +13,21 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
+  var _name;
+  var _password;
+  void updateName(val) {
+    setState(() {
+      _name = val;
+    });
+  }
+  void updatePassword(val) {
+    setState(() {
+      _password = val;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Stack(
-
       children: [
         BackGroundImage(),
         Scaffold(
@@ -45,48 +53,97 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: Column(
                     children: [
-                      Column(
-                        children: [
-                          TextInput(
-                            icon: Icons.account_circle,
-                            hint: "Kullanıcı Adı",
-                            inputType: TextInputType.emailAddress,
-                            inputAction: TextInputAction.next,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 12.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.grey[600]?.withOpacity(0.5),
+                              borderRadius: BorderRadius.circular(16)),
+                          child: TextFormField(
+                            onChanged: (val) {
+                              updateName(val);
+                            },
+                            decoration: InputDecoration(
+                                contentPadding:
+                                EdgeInsets.symmetric(vertical: 20),
+                                border: InputBorder.none,
+                                hintText: 'Kullanıcı Adı',
+                                prefixIcon: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
+                                  child: Icon(
+                                    Icons.account_circle,
+                                    color: Colors.white,
+                                    size: 30,
+                                  ),
+                                ),
+                                hintStyle: kBodyText),
+                            style: kBodyText,
                           ),
-
-                          PasswordInput(
-                            icon: Icons.lock,
-                            hint: "Şifre",
-                            inputAction: TextInputAction.done,
-                          ),
-                        ],
+                        ),
                       ),
-                      Container(
-                      height: 113,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 12.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.grey[600]?.withOpacity(0.5),
+                              borderRadius: BorderRadius.circular(16)),
+                          child: TextFormField(
+                            onChanged: (val) {
+                              updatePassword(val);
+                            },
+                            decoration: InputDecoration(
+                                contentPadding:
+                                EdgeInsets.symmetric(vertical: 20),
+                                border: InputBorder.none,
+                                hintText: 'Şifre',
+                                prefixIcon: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
+                                  child: Icon(
+                                    Icons.lock,
+                                    color: Colors.white,
+                                    size: 30,
+                                  ),
+                                ),
+                                hintStyle: kBodyText),
+                            obscureText: true,
+                            style: kBodyText,
+                          ),
+                        ),
+                      ),
 
-                      child: CheckBox_(),
+                      Container(
+                        height: 113,
+                        child: CheckBox_(),
                       ),
                       //Column(children: [CheckBox_()],),
-                      Column(
-                        children: [
-                          SizedBox(height: 35),
-                          Container(
-                            width: double.infinity,
-                            decoration:BoxDecoration(
-                                color: Colors.black,
-                                borderRadius:BorderRadius.circular(16)),
-                            child:TextButton(
-                              onPressed: (){
-                                  },
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                                child: Text("Giriş Yap",style: kBodyText,),
-                              ),
+                      SizedBox(height: 35),
+                      Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(16)),
+                        child: TextButton(
+                          onPressed: () {
+                            if (_name == 'kp' && _password == '1234') {
+                              print('assdf');
+                              if (global.durum == true) {
+                                print('durum : true');
+                              }
+                              if (global.durum2 == true) {
+                                print('durum2 : true');
+                              }
+                            }
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10.0),
+                            child: Text(
+                              "Giriş Yap",
+                              style: kBodyText,
                             ),
                           ),
-                          //Column(children: [CheckBox_()],)
-
-                        ],
+                        ),
                       )
                     ],
                   ),
