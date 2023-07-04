@@ -31,10 +31,8 @@ class MyApp extends StatelessWidget {
           else{
             return Center(child: CircularProgressIndicator(),);
           }
-
         },
       )
-
     );
   }
 }

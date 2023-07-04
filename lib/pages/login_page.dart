@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:healthproject/colors.dart';
 import 'package:healthproject/global.dart' as global;
-
+import 'first_page.dart';
 import '../widgets/check_box.dart';
 import "../widgets/widgets.dart";
 
@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 120,
                   child: Center(
                     child: Text(
-                      "Hoş geldiniz!",
+                      "MediConn",
                       style: kHeading,
                     ),
                   ),
@@ -126,19 +126,37 @@ class _LoginPageState extends State<LoginPage> {
                             color: Colors.black,
                             borderRadius: BorderRadius.circular(16)),
                         child: TextButton(
-                          onPressed: () {
-                            FirebaseFirestore firestore = FirebaseFirestore.instance;
-                            CollectionReference testCollectionRef = FirebaseFirestore.instance.collection('testCollection');
-                            testCollectionRef.add({"test":10});
-                            if (_name == 'kp' && _password == '1234') {
-                              print('assdf');
-                              if (global.durum == true) {
-                                print('durum : true');
-                              }
-                              if (global.durum2 == true) {
-                                print('durum2 : true');
+                          onPressed: () async {
+                            FirebaseFirestore firestore =
+                                FirebaseFirestore.instance;
+                            CollectionReference testCollectionRef =
+                            FirebaseFirestore.instance
+                                .collection('kullanicilar');
+
+                            var respons = await testCollectionRef.get();
+                            var list = respons.docs;
+                            for (int i = 0; i < list.length; i++) {
+                              var map = list[i].data() as Map<String, dynamic>;
+                              // var x = map['test'];
+                              var k_adi = map['kullaniciAdi'];
+                              var sifre = map['sifre'];
+
+                              if (_name == k_adi && _password == sifre) {
+                                // checkboxlar işaretlenmedi
+                                if (global.durum == true &&
+                                    global.durum2 == true) {
+                                  print('Giriş Başarılı');
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => FirstPage()));
+                                  //Navigator.of(context).popUntil((route) => route.isFirst); anasayfaya dön
+                                  //Navigator.pop(context) önceki sayfaya dön
+                                }
                               }
                             }
+
+                            // testCollectionRef.add({"kerem": 55});
                           },
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 10.0),
