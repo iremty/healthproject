@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import "package:google_fonts/google_fonts.dart";
+import 'package:healthproject/pages/test.dart';
 import "pages/login_page.dart";
 import 'package:firebase_core/firebase_core.dart';
 void main()  {
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
           if(snapshot.hasError){
             return Center(child: Text("hata"),);
           } else if(snapshot.hasData){
-            return LoginPage();
+            return Test();
         }
           else{
             return Center(child: CircularProgressIndicator(),);
