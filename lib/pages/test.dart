@@ -1,19 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:healthproject/global.dart' as global;
+import 'package:healthproject/pages/first_page.dart';
 
-class RadioButton extends StatefulWidget {
-  const RadioButton({super.key});
+class Test extends StatefulWidget {
+  const Test({super.key});
 
   @override
   _RadState createState() => _RadState();
 }
 
-class _RadState extends State<RadioButton> {
+class _RadState extends State<Test> {
   List<DocumentSnapshot> dataList = [];
 
   List<String> sorular = [];
   List<SoruCevap> sorucevap = [];
+
   @override
   void initState() {
     super.initState();
@@ -44,6 +46,7 @@ class _RadState extends State<RadioButton> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue[900],
         title: const Text("Haftalık Test"),
         centerTitle: true,
       ),
@@ -51,11 +54,8 @@ class _RadState extends State<RadioButton> {
         children: [
           Container(
             decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/login.jpeg"),
-                    fit: BoxFit.cover,
-                    colorFilter:
-                    ColorFilter.mode(Colors.black45, BlendMode.darken))),
+              color: Colors.white70,
+            ),
           ),
           Column(
             children: [
@@ -83,99 +83,26 @@ class _RadState extends State<RadioButton> {
                           ),
                           Row(
                             children: [
-                              Radio(
-                                  value: 1,
-                                  groupValue: sorucevap[index].cevap,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      sorucevap[index].cevap = value!;
-                                    });
-                                  }),
-                              const Text(
-                                "1",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              Radio(
-                                  value: 2,
-                                  groupValue: sorucevap[index].cevap,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      sorucevap[index].cevap = value!;
-                                    });
-                                  }),
-                              const Text(
-                                "2",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              Radio(
-                                  value: 3,
-                                  groupValue: sorucevap[index].cevap,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      sorucevap[index].cevap = value!;
-                                    });
-                                  }),
-                              const Text(
-                                "3",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              Radio(
-                                  value: 4,
-                                  groupValue: sorucevap[index].cevap,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      sorucevap[index].cevap = value!;
-                                    });
-                                  }),
-                              const Text(
-                                "4",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              Radio(
-                                  value: 5,
-                                  groupValue: sorucevap[index].cevap,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      sorucevap[index].cevap = value!;
-                                    });
-                                  }),
-                              const Text(
-                                "5",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
+                              buildRadio(index, 1),
+                              buildText("1"),
+                              buildSizedBox(),
+                              buildRadio(index, 2),
+                              buildText("2"),
+                              buildSizedBox(),
+                              buildRadio(index, 3),
+                              buildText("3"),
+                              buildSizedBox(),
+                              buildRadio(index, 4),
+                              buildText("4"),
+                              buildSizedBox(),
+                              buildRadio(index, 5),
+                              buildText("5"),
                             ],
                           ),
                           Divider(
                             height: 10,
-                            color: Colors.cyan,
-                            thickness: 3,
+                            color: Colors.blueGrey,
+                            thickness: 2,
                           )
                         ],
                       ),
@@ -213,6 +140,120 @@ class _RadState extends State<RadioButton> {
           ),
         ],
       ),
+      drawer: Drawer(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [buildHeader(context), buildMenuItems(context)],
+          ),
+        ),
+      ),
+    );
+  }
+
+  SizedBox buildSizedBox() {
+    return const SizedBox(
+      width: 20,
+    );
+  }
+
+  Text buildText(String a) {
+    return Text(
+      a,
+      style: TextStyle(
+          fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+    );
+  }
+
+  Radio<int> buildRadio(int index, int x) {
+    return Radio(
+        value: x,
+        groupValue: sorucevap[index].cevap,
+        onChanged: (value) {
+          setState(() {
+            sorucevap[index].cevap = value!;
+          });
+        });
+  }
+
+  Widget buildHeader(BuildContext context) => Container(
+    color: Colors.indigo[900],
+    padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+    child: Column(
+      children: [
+        SizedBox(
+          height: 30,
+        ),
+        CircleAvatar(
+          backgroundImage: AssetImage('assets/m.jpg'),
+          radius: 80,
+        ),
+        SizedBox(
+          height: 20,
+        )
+      ],
+    ),
+  );
+
+  Widget buildMenuItems(BuildContext context) => Column(
+    children: [
+      ListTile(
+        leading: Icon(Icons.home_outlined),
+        title: Text('Anasayfa'),
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => FirstPage()));
+        },
+      ),
+      buildDivider(),
+      ListTile(
+        leading: const Icon(Icons.pending_actions),
+        title: const Text('Test'),
+        onTap: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Test()));
+        },
+      ),
+      buildDivider(),
+      ListTile(
+        leading: const Icon(Icons.vaccines),
+        title: const Text('İlaç Takip'),
+        onTap: () {},
+      ),
+      buildDivider(),
+      ListTile(
+        leading: const Icon(Icons.sports_gymnastics),
+        title: const Text('Egzersiz'),
+        onTap: () {},
+      ),
+      buildDivider(),
+      ListTile(
+        leading: const Icon(Icons.monitor_heart),
+        title: const Text('Kronik Hastalıklar'),
+        onTap: () {},
+      ),
+      buildDivider(),
+      ListTile(
+        leading: const Icon(Icons.mail),
+        title: const Text('Geri Bildirim'),
+        onTap: () {},
+      ),
+      buildDivider(),
+      ListTile(
+        leading: const Icon(Icons.exit_to_app),
+        title: const Text('Çıkış'),
+        onTap: () {
+          Navigator.of(context).popUntil((route) => route.isFirst);
+        },
+      ),
+      buildDivider(),
+    ],
+  );
+
+  Divider buildDivider() {
+    return Divider(
+      height: 10,
+      thickness: 1,
     );
   }
 }
