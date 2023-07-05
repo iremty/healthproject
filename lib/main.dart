@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           if(snapshot.hasError){
             return Center(child: Text("hata"),);
           } else if(snapshot.hasData){
-            return Test();
+            return LoginPage();
         }
           else{
             return Center(child: CircularProgressIndicator(),);

@@ -2,7 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:healthproject/colors.dart';
 import 'package:healthproject/global.dart' as global;
-import 'first_page.dart';
+import 'package:healthproject/pages/first_page.dart';
+
 import '../widgets/check_box.dart';
 import "../widgets/widgets.dart";
 
@@ -21,11 +22,13 @@ class _LoginPageState extends State<LoginPage> {
       _name = val;
     });
   }
+
   void updatePassword(val) {
     setState(() {
       _password = val;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -145,13 +148,19 @@ class _LoginPageState extends State<LoginPage> {
                                 // checkboxlar işaretlenmedi
                                 if (global.durum == true &&
                                     global.durum2 == true) {
-                                  print('Giriş Başarılı');
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => FirstPage()));
-                                  //Navigator.of(context).popUntil((route) => route.isFirst); anasayfaya dön
-                                  //Navigator.pop(context) önceki sayfaya dön
+                                  var k_tipi = map['kullaniciTipi'];
+                                  if (k_tipi) {
+                                    print('Giriş Başarılı');
+                                    global.kullaniciAdi = k_adi;
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => FirstPage()));
+                                    //Navigator.of(context).popUntil((route) => route.isFirst); anasayfaya dön
+                                    //Navigator.pop(context) önceki sayfaya dön
+                                  } else {
+                                    print('yönetici değil');
+                                  }
                                 }
                               }
                             }
