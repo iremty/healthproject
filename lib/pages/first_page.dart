@@ -55,7 +55,7 @@ class _FirstPageState extends State<FirstPage> {
                           autoPlay: true,
                           autoPlayInterval: Duration(seconds: 3),
                           autoPlayAnimationDuration:
-                          Duration(milliseconds: 800),
+                              Duration(milliseconds: 800),
                           autoPlayCurve: Curves.fastOutSlowIn,
                           enlargeCenterPage: true,
                           enlargeFactor: 0.3,
@@ -100,7 +100,7 @@ class _FirstPageState extends State<FirstPage> {
                             Text(
                               'Test',
                               style:
-                              TextStyle(color: Colors.white, fontSize: 20),
+                                  TextStyle(color: Colors.white, fontSize: 20),
                             )
                           ],
                         ),
@@ -123,7 +123,7 @@ class _FirstPageState extends State<FirstPage> {
                             Text(
                               'İlaç Takip',
                               style:
-                              TextStyle(color: Colors.white, fontSize: 20),
+                                  TextStyle(color: Colors.white, fontSize: 20),
                             )
                           ],
                         ),
@@ -147,7 +147,7 @@ class _FirstPageState extends State<FirstPage> {
                             Text(
                               'Egzersiz',
                               style:
-                              TextStyle(color: Colors.white, fontSize: 20),
+                                  TextStyle(color: Colors.white, fontSize: 20),
                             )
                           ],
                         ),
@@ -178,7 +178,7 @@ class _FirstPageState extends State<FirstPage> {
                             Text(
                               '    Kronik\nHastalıklar',
                               style:
-                              TextStyle(color: Colors.white, fontSize: 20),
+                                  TextStyle(color: Colors.white, fontSize: 20),
                             )
                           ],
                         ),
@@ -201,7 +201,7 @@ class _FirstPageState extends State<FirstPage> {
                             Text(
                               '    Stres\nYönetimi',
                               style:
-                              TextStyle(color: Colors.white, fontSize: 20),
+                                  TextStyle(color: Colors.white, fontSize: 20),
                             )
                           ],
                         ),
@@ -224,7 +224,7 @@ class _FirstPageState extends State<FirstPage> {
                             Text(
                               'Test\n',
                               style:
-                              TextStyle(color: Colors.white, fontSize: 20),
+                                  TextStyle(color: Colors.white, fontSize: 20),
                             )
                           ],
                         )
@@ -250,78 +250,78 @@ class _FirstPageState extends State<FirstPage> {
   }
 
   Widget buildHeader(BuildContext context) => Container(
-    color: Colors.indigo[900],
-    padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-    child: Column(
-      children: [
-        SizedBox(
-          height: 30,
+        color: Colors.indigo[900],
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 30,
+            ),
+            CircleAvatar(
+              backgroundImage: AssetImage('assets/m.jpg'),
+              radius: 80,
+            ),
+            SizedBox(
+              height: 20,
+            )
+          ],
         ),
-        CircleAvatar(
-          backgroundImage: AssetImage('assets/m.jpg'),
-          radius: 80,
-        ),
-        SizedBox(
-          height: 20,
-        )
-      ],
-    ),
-  );
+      );
 
   Widget buildMenuItems(BuildContext context) => Column(
-    children: [
-      ListTile(
-        leading: Icon(Icons.home_outlined),
-        title: Text('Anasayfa'),
-        onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => FirstPage()));
-        },
-      ),
-      buildDivider(),
-      ListTile(
-        leading: const Icon(Icons.pending_actions),
-        title: const Text('Test'),
-        onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Test()));
-        },
-      ),
-      buildDivider(),
-      ListTile(
-        leading: const Icon(Icons.vaccines),
-        title: const Text('İlaç Takip'),
-        onTap: () {},
-      ),
-      buildDivider(),
-      ListTile(
-        leading: const Icon(Icons.sports_gymnastics),
-        title: const Text('Egzersiz'),
-        onTap: () {},
-      ),
-      buildDivider(),
-      ListTile(
-        leading: const Icon(Icons.monitor_heart),
-        title: const Text('Kronik Hastalıklar'),
-        onTap: () {},
-      ),
-      buildDivider(),
-      ListTile(
-        leading: const Icon(Icons.mail),
-        title: const Text('Geri Bildirim'),
-        onTap: () {},
-      ),
-      buildDivider(),
-      ListTile(
-        leading: const Icon(Icons.exit_to_app),
-        title: const Text('Çıkış'),
-        onTap: () {
-          Navigator.of(context).popUntil((route) => route.isFirst);
-        },
-      ),
-      buildDivider(),
-    ],
-  );
+        children: [
+          ListTile(
+            leading: Icon(Icons.home_outlined),
+            title: Text('Anasayfa'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => FirstPage()));
+            },
+          ),
+          buildDivider(),
+          ListTile(
+            leading: const Icon(Icons.pending_actions),
+            title: const Text('Test'),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Test()));
+            },
+          ),
+          buildDivider(),
+          ListTile(
+            leading: const Icon(Icons.vaccines),
+            title: const Text('İlaç Takip'),
+            onTap: () {},
+          ),
+          buildDivider(),
+          ListTile(
+            leading: const Icon(Icons.sports_gymnastics),
+            title: const Text('Egzersiz'),
+            onTap: () {},
+          ),
+          buildDivider(),
+          ListTile(
+            leading: const Icon(Icons.monitor_heart),
+            title: const Text('Kronik Hastalıklar'),
+            onTap: () {},
+          ),
+          buildDivider(),
+          ListTile(
+            leading: const Icon(Icons.mail),
+            title: const Text('Geri Bildirim'),
+            onTap: () {},
+          ),
+          buildDivider(),
+          ListTile(
+            leading: const Icon(Icons.exit_to_app),
+            title: const Text('Çıkış'),
+            onTap: () {
+              Navigator.of(context).popUntil((route) => route.isFirst);
+            },
+          ),
+          buildDivider(),
+        ],
+      );
 
   Divider buildDivider() {
     return Divider(
