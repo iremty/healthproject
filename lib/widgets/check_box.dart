@@ -53,27 +53,31 @@ class _CheckBoxState extends State<CheckBox_> {
               });
             },
           ),
-          CheckboxListTile(
-            title: Text(
-              "Açık Rıza Beyanını okudum, onayladım.",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            checkColor: Colors.white,
-            activeColor: Colors.black,
-            shape: StadiumBorder(),
-            value: global.durum2,
-            controlAffinity: ListTileControlAffinity.leading,
-            onChanged: (bool? veri) {
-              setState(() {
-                global.durum2 = veri!;
-                if (veri == true) {
-                  _launch2URL();
-                }
-              });
-            },
-          ),
+          buildCheckboxListTile(),
         ],
       ),
     );
+  }
+
+  CheckboxListTile buildCheckboxListTile() {
+    return CheckboxListTile(
+          title: Text(
+            "Açık Rıza Beyanını okudum, onayladım.",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          checkColor: Colors.white,
+          activeColor: Colors.black,
+          shape: StadiumBorder(),
+          value: global.durum2,
+          controlAffinity: ListTileControlAffinity.leading,
+          onChanged: (bool? veri) {
+            setState(() {
+              global.durum2 = veri!;
+              if (veri == true) {
+                _launch2URL();
+              }
+            });
+          },
+        );
   }
 }

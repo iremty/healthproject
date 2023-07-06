@@ -69,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                             },
                             decoration: InputDecoration(
                                 contentPadding:
-                                EdgeInsets.symmetric(vertical: 20),
+                                    EdgeInsets.symmetric(vertical: 20),
                                 border: InputBorder.none,
                                 hintText: 'Kullanıcı Adı',
                                 prefixIcon: Padding(
@@ -98,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                             },
                             decoration: InputDecoration(
                                 contentPadding:
-                                EdgeInsets.symmetric(vertical: 20),
+                                    EdgeInsets.symmetric(vertical: 20),
                                 border: InputBorder.none,
                                 hintText: 'Şifre',
                                 prefixIcon: Padding(
@@ -133,8 +133,8 @@ class _LoginPageState extends State<LoginPage> {
                             FirebaseFirestore firestore =
                                 FirebaseFirestore.instance;
                             CollectionReference testCollectionRef =
-                            FirebaseFirestore.instance
-                                .collection('kullanicilar');
+                                FirebaseFirestore.instance
+                                    .collection('kullanicilar');
 
                             var respons = await testCollectionRef.get();
                             var list = respons.docs;
@@ -145,7 +145,6 @@ class _LoginPageState extends State<LoginPage> {
                               var sifre = map['sifre'];
 
                               if (_name == k_adi && _password == sifre) {
-                                // checkboxlar işaretlenmedi
                                 if (global.durum == true &&
                                     global.durum2 == true) {
                                   var k_tipi = map['kullaniciTipi'];
@@ -153,15 +152,22 @@ class _LoginPageState extends State<LoginPage> {
                                     print('Giriş Başarılı');
                                     global.kullaniciAdi = k_adi;
                                     Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => FirstPage()));
-                                    //Navigator.of(context).popUntil((route) => route.isFirst); anasayfaya dön
-                                    //Navigator.pop(context) önceki sayfaya dön
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => FirstPage()),
+                                    );
+
                                   } else {
                                     print('yönetici değil');
                                   }
                                 }
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content:
+                                        Text('Yanlış kullanıcı adı veya şifre'),
+                                  ),
+                                );
                               }
                             }
 
