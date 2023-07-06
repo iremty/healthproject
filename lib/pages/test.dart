@@ -48,7 +48,7 @@ class _RadState extends State<Test> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[900],
+        backgroundColor: Colors.indigo[900],
         title: const Text("Haftalık Test"),
         centerTitle: true,
       ),

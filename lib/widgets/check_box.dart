@@ -37,7 +37,7 @@ class _CheckBoxState extends State<CheckBox_> {
           CheckboxListTile(
             title: Text(
               "Aydınlatma Metnini okudum, onayladım.",
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
             ),
             checkColor: Colors.white,
             activeColor: Colors.black,
@@ -63,7 +63,7 @@ class _CheckBoxState extends State<CheckBox_> {
     return CheckboxListTile(
           title: Text(
             "Açık Rıza Beyanını okudum, onayladım.",
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
           ),
           checkColor: Colors.white,
           activeColor: Colors.black,

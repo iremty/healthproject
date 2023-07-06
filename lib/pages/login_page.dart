@@ -45,10 +45,8 @@ class _LoginPageState extends State<LoginPage> {
                   padding: EdgeInsets.only(top: 35),
                   height: 120,
                   child: Center(
-                    child: Text(
-                      "MediConn",
-                      style: kHeading,
-                    ),
+
+                  
                   ),
                 ),
                 SizedBox(
@@ -58,8 +56,10 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: Column(
                     children: [
+                      SizedBox(height: 75,),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 12.0),
+
                         child: Container(
                           decoration: BoxDecoration(
                               color: Colors.grey[600]?.withOpacity(0.5),
@@ -127,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                       Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
-                            color: Colors.black,
+                            color: Colors.black45,
                             borderRadius: BorderRadius.circular(16)),
                         child: TextButton(
                           onPressed: () async {
