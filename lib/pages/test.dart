@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:healthproject/global.dart' as global;
 import 'package:healthproject/pages/first_page.dart';
 
+import 'diseases.dart';
+
 class Test extends StatefulWidget {
   const Test({super.key});
 
@@ -230,7 +232,12 @@ class _RadState extends State<Test> {
       ListTile(
         leading: const Icon(Icons.monitor_heart),
         title: const Text('Kronik Hastalıklar'),
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Kronik()));
+        },
       ),
       buildDivider(),
       ListTile(

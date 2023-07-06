@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:healthproject/pages/diseases.dart';
 import 'package:healthproject/pages/test.dart';
 
 class FirstPage extends StatefulWidget {
@@ -168,7 +169,12 @@ class _FirstPageState extends State<FirstPage> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20)),
                                   backgroundColor: Colors.white),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Kronik()));
+                              },
                               child: Icon(
                                 Icons.monitor_heart,
                                 size: 70,
