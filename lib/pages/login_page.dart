@@ -138,6 +138,7 @@ class _LoginPageState extends State<LoginPage> {
 
                             var respons = await testCollectionRef.get();
                             var list = respons.docs;
+                            int control=0;
                             for (int i = 0; i < list.length; i++) {
                               var map = list[i].data() as Map<String, dynamic>;
                               // var x = map['test'];
@@ -145,8 +146,10 @@ class _LoginPageState extends State<LoginPage> {
                               var sifre = map['sifre'];
 
                               if (_name == k_adi && _password == sifre) {
+                                control=1;
                                 if (global.durum == true &&
-                                    global.durum2 == true) {
+                                    global.durum2 == true ) {
+
                                   var k_tipi = map['kullaniciTipi'];
                                   if (k_tipi) {
                                     print('Giriş Başarılı');
@@ -161,14 +164,22 @@ class _LoginPageState extends State<LoginPage> {
                                     print('yönetici değil');
                                   }
                                 }
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
+                                else{
+                                  ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content:
-                                        Text('Yanlış kullanıcı adı veya şifre'),
+                                    Text('Aydınlatma metni ve Açık rıza beyanını onaylayınız! '),
                                   ),
-                                );
+                                );}
                               }
+                            }
+                            if (control==0) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                            content:
+                            Text('Yanlış kullanıcı adı veya şifre'),
+                            ),
+                            );
                             }
 
                             // testCollectionRef.add({"kerem": 55});
