@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:healthproject/admin_pages/admin_page.dart';
 import 'package:healthproject/colors.dart';
 import 'package:healthproject/global.dart' as global;
 import 'package:healthproject/pages/first_page.dart';
@@ -69,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                             },
                             decoration: InputDecoration(
                                 contentPadding:
-                                    EdgeInsets.symmetric(vertical: 20),
+                                EdgeInsets.symmetric(vertical: 20),
                                 border: InputBorder.none,
                                 hintText: 'Kullanıcı Adı',
                                 prefixIcon: Padding(
@@ -98,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                             },
                             decoration: InputDecoration(
                                 contentPadding:
-                                    EdgeInsets.symmetric(vertical: 20),
+                                EdgeInsets.symmetric(vertical: 20),
                                 border: InputBorder.none,
                                 hintText: 'Şifre',
                                 prefixIcon: Padding(
@@ -133,12 +134,12 @@ class _LoginPageState extends State<LoginPage> {
                             FirebaseFirestore firestore =
                                 FirebaseFirestore.instance;
                             CollectionReference testCollectionRef =
-                                FirebaseFirestore.instance
-                                    .collection('kullanicilar');
+                            FirebaseFirestore.instance
+                                .collection('kullanicilar');
 
                             var respons = await testCollectionRef.get();
                             var list = respons.docs;
-                            int control=0;
+                            int control = 0;
                             for (int i = 0; i < list.length; i++) {
                               var map = list[i].data() as Map<String, dynamic>;
                               // var x = map['test'];
@@ -146,10 +147,9 @@ class _LoginPageState extends State<LoginPage> {
                               var sifre = map['sifre'];
 
                               if (_name == k_adi && _password == sifre) {
-                                control=1;
+                                control = 1;
                                 if (global.durum == true &&
-                                    global.durum2 == true ) {
-
+                                    global.durum2 == true) {
                                   var k_tipi = map['kullaniciTipi'];
                                   if (k_tipi) {
                                     print('Giriş Başarılı');
@@ -159,27 +159,29 @@ class _LoginPageState extends State<LoginPage> {
                                       MaterialPageRoute(
                                           builder: (context) => FirstPage()),
                                     );
-
                                   } else {
-                                    print('yönetici değil');
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => AdminMenu()));
                                   }
-                                }
-                                else{
+                                } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content:
-                                    Text('Aydınlatma metni ve Açık rıza beyanını onaylayınız! '),
-                                  ),
-                                );}
+                                    SnackBar(
+                                      content: Text(
+                                          'Aydınlatma metni ve Açık rıza beyanını onaylayınız! '),
+                                    ),
+                                  );
+                                }
                               }
                             }
-                            if (control==0) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                            content:
-                            Text('Yanlış kullanıcı adı veya şifre'),
-                            ),
-                            );
+                            if (control == 0) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content:
+                                  Text('Yanlış kullanıcı adı veya şifre'),
+                                ),
+                              );
                             }
 
                             // testCollectionRef.add({"kerem": 55});

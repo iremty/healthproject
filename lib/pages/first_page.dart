@@ -12,10 +12,11 @@ class FirstPage extends StatefulWidget {
 
 class _FirstPageState extends State<FirstPage> {
   List<Widget> items = [
-    //  Image.asset('assets/m.jpg'),
-    Image.asset('assets/login.jpeg'),
+
+    Image.asset('assets/tans.png'),
     Image.asset('assets/alerji.jpg'),
     Image.asset('assets/migren.jpeg')
+
   ];
 
   @override
