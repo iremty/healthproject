@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import "package:google_fonts/google_fonts.dart";
 import 'package:healthproject/pages/diseases.dart';
 import 'package:healthproject/pages/first_page.dart';
+import 'package:healthproject/pages/stress.dart';
 import 'package:healthproject/pages/test.dart';
 import "pages/login_page.dart";
 import 'package:firebase_core/firebase_core.dart';

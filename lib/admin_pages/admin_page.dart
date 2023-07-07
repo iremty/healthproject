@@ -1,6 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:healthproject/admin_pages/hastalik_sonuc.dart';
 import 'package:healthproject/admin_pages/test_sonuc.dart';
+
+import '../widgets/background_image.dart';
 
 class AdminMenu extends StatefulWidget {
   const AdminMenu({super.key});
@@ -13,162 +16,179 @@ class _AdminMenuState extends State<AdminMenu> {
   List<Widget> items = [
     //  Image.asset('assets/m.jpg'),
     Image.asset('assets/login.jpeg'),
-    Image.asset('assets/grip.jpg'),
-    Image.asset('assets/803.jpg')
+    Image.asset('assets/alerji.jpg'),
+    Image.asset('assets/migren.jpeg')
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.indigo[900],
-        title: Text(
-          'MediConn',
-          style: TextStyle(
-              color: Colors.white, fontSize: 35, fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 15,
+    return Stack(
+      children: [
+        BackGroundImage1(),
+        Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.blue[900],
+            title: Text(
+              'MediConn',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold),
             ),
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CarouselSlider(
-                        items: items,
-                        options: CarouselOptions(
-                          aspectRatio: 16 / 9,
-                          viewportFraction: 0.8,
-                          initialPage: 0,
-                          enableInfiniteScroll: true,
-                          reverse: false,
-                          autoPlay: true,
-                          autoPlayInterval: Duration(seconds: 3),
-                          autoPlayAnimationDuration:
-                          Duration(milliseconds: 800),
-                          autoPlayCurve: Curves.fastOutSlowIn,
-                          enlargeCenterPage: true,
-                          enlargeFactor: 0.3,
-                          scrollDirection: Axis.horizontal,
-                        )),
-                  ],
+            centerTitle: true,
+          ),
+          body: Center(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 15,
                 ),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                color: Colors.indigo[900],
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 85,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.white),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Column(
-                          children: [
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
-                                  backgroundColor: Colors.white,
-                                  side: BorderSide(
-                                      color: Colors.white, width: 2.0)),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => SonucClass()));
-                              },
-                              child: Icon(
-                                Icons.pending_actions,
-                                size: 70,
-                                color: Colors.indigo[900],
-                              ),
-                            ),
-                            Text(
-                              'Test Sonuçları',
-                              style:
-                              TextStyle(color: Colors.white, fontSize: 20),
-                            )
-                          ],
+                        CarouselSlider(
+                            items: items,
+                            options: CarouselOptions(
+                              aspectRatio: 16 / 9,
+                              viewportFraction: 0.8,
+                              initialPage: 0,
+                              enableInfiniteScroll: true,
+                              reverse: false,
+                              autoPlay: true,
+                              autoPlayInterval: Duration(seconds: 3),
+                              autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
+                              autoPlayCurve: Curves.fastOutSlowIn,
+                              enlargeCenterPage: true,
+                              enlargeFactor: 0.3,
+                              scrollDirection: Axis.horizontal,
+                            )),
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 40,
                         ),
-                        Column(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20),
+                            Column(
+                              children: [
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(20)),
+                                      backgroundColor: Colors.white,
                                       side: BorderSide(
                                           color: Colors.white, width: 2.0)),
-                                  backgroundColor: Colors.white),
-                              onPressed: () {},
-                              child: Icon(
-                                Icons.vaccines,
-                                size: 70,
-                                color: Colors.indigo[900],
-                              ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                SonucClass()));
+                                  },
+                                  child: Icon(
+                                    Icons.pending_actions,
+                                    size: 70,
+                                    color: Colors.blue[900],
+                                  ),
+                                ),
+                                Text(
+                                  'Test Sonuçları\n',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                )
+                              ],
                             ),
-                            Text(
-                              'İlaç Takip',
-                              style:
-                              TextStyle(color: Colors.white, fontSize: 20),
-                            )
+                            Column(
+                              children: [
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(20),
+                                          side: BorderSide(
+                                              color: Colors.white, width: 2.0)),
+                                      backgroundColor: Colors.white),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Hastalik()));
+                                  },
+                                  child: Icon(
+                                    Icons.vaccines,
+                                    size: 70,
+                                    color: Colors.blue[900],
+                                  ),
+                                ),
+                                Text(
+                                  'Kronik\nHastalıklar',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                )
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      backgroundColor: Colors.white,
+                                      side: BorderSide(
+                                          color: Colors.white, width: 2.0)),
+                                  onPressed: () {},
+                                  child: Icon(
+                                    Icons.sports_gymnastics_outlined,
+                                    size: 70,
+                                    color: Colors.blue[900],
+                                  ),
+                                ),
+                                Text(
+                                  'Egzersiz\n',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                )
+                              ],
+                            ),
                           ],
                         ),
-                        Column(
-                          children: [
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  backgroundColor: Colors.white,
-                                  side: BorderSide(
-                                      color: Colors.white, width: 2.0)),
-                              onPressed: () {},
-                              child: Icon(
-                                Icons.sports_gymnastics_outlined,
-                                size: 70,
-                                color: Colors.indigo[900],
-                              ),
-                            ),
-                            Text(
-                              'Egzersiz',
-                              style:
-                              TextStyle(color: Colors.white, fontSize: 20),
-                            )
-                          ],
+                        SizedBox(
+                          height: 20,
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
+              ],
+            ),
+          ),
+          backgroundColor: Colors.transparent,
+          drawer: Drawer(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [buildHeader(context), buildMenuItems(context)],
               ),
             ),
-          ],
-        ),
-      ),
-      backgroundColor: Colors.indigo[900],
-      drawer: Drawer(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [buildHeader(context), buildMenuItems(context)],
           ),
-        ),
-      ),
+        )
+      ],
     );
   }
 

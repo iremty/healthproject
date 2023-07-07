@@ -10,7 +10,6 @@ import "../widgets/widgets.dart";
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
-
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -56,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: Column(
                     children: [
-                      SizedBox(height: 75,),
+                      SizedBox(height: 90),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 12.0),
 

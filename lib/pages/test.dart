@@ -17,7 +17,7 @@ class _RadState extends State<Test> {
 
   List<String> sorular = [];
   List<SoruCevap> sorucevap = [];
-
+  global.DrawerKullanici menu = global.DrawerKullanici();
   @override
   void initState() {
     super.initState();
@@ -49,7 +49,7 @@ class _RadState extends State<Test> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.indigo[900],
-        title: const Text("Haftalık Test"),
+        title: const Text("Haftalık Anket"),
         centerTitle: true,
       ),
       body: Stack(
@@ -116,7 +116,7 @@ class _RadState extends State<Test> {
                 onPressed: () {
                   FirebaseFirestore firestore = FirebaseFirestore.instance;
                   CollectionReference cevaplarBase =
-                  firestore.collection('cevaplar');
+                      firestore.collection('cevaplar');
                   for (int i = 0; i < sorucevap.length; i++) {
                     print(
                         'soru:${sorucevap[i].soru} cevap:${sorucevap[i].cevap}');
@@ -146,7 +146,7 @@ class _RadState extends State<Test> {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [buildHeader(context), buildMenuItems(context)],
+            children: [menu.buildHeader(context), menu.buildMenuItems(context)],
           ),
         ),
       ),
@@ -176,92 +176,6 @@ class _RadState extends State<Test> {
             sorucevap[index].cevap = value!;
           });
         });
-  }
-
-  Widget buildHeader(BuildContext context) => Container(
-    color: Colors.indigo[900],
-    padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-    child: Column(
-      children: [
-        SizedBox(
-          height: 30,
-        ),
-        CircleAvatar(
-          backgroundImage: AssetImage('assets/m.jpg'),
-          radius: 80,
-        ),
-        SizedBox(
-          height: 20,
-        )
-      ],
-    ),
-  );
-
-  Widget buildMenuItems(BuildContext context) => Column(
-    children: [
-      ListTile(
-        leading: Icon(Icons.home_outlined),
-        title: Text('Anasayfa'),
-        onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => FirstPage()));
-        },
-      ),
-      buildDivider(),
-      ListTile(
-        leading: const Icon(Icons.pending_actions),
-        title: const Text('Test'),
-        onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Test()));
-        },
-      ),
-      buildDivider(),
-      ListTile(
-        leading: const Icon(Icons.vaccines),
-        title: const Text('İlaç Takip'),
-        onTap: () {},
-      ),
-      buildDivider(),
-      ListTile(
-        leading: const Icon(Icons.sports_gymnastics),
-        title: const Text('Egzersiz'),
-        onTap: () {},
-      ),
-      buildDivider(),
-      ListTile(
-        leading: const Icon(Icons.monitor_heart),
-        title: const Text('Kronik Hastalıklar'),
-        onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => Kronik()));
-        },
-      ),
-      buildDivider(),
-      ListTile(
-        leading: const Icon(Icons.mail),
-        title: const Text('Geri Bildirim'),
-        onTap: () {},
-      ),
-      buildDivider(),
-      ListTile(
-        leading: const Icon(Icons.exit_to_app),
-        title: const Text('Çıkış'),
-        onTap: () {
-          Navigator.of(context).popUntil((route) => route.isFirst);
-        },
-      ),
-      buildDivider(),
-    ],
-  );
-
-  Divider buildDivider() {
-    return Divider(
-      height: 10,
-      thickness: 1,
-    );
   }
 }
 

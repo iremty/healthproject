@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:healthproject/global.dart' as global;
 import 'package:healthproject/pages/diseases.dart';
+import 'package:healthproject/pages/stress.dart';
 import 'package:healthproject/pages/test.dart';
 import 'package:healthproject/widgets/background_image.dart';
 
@@ -17,7 +19,7 @@ class _FirstPageState extends State<FirstPage> {
     Image.asset('assets/alerji.jpg'),
     Image.asset('assets/migren.jpeg')
   ];
-
+  global.DrawerKullanici menu = global.DrawerKullanici();
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -61,7 +63,7 @@ class _FirstPageState extends State<FirstPage> {
                               autoPlay: true,
                               autoPlayInterval: Duration(seconds: 3),
                               autoPlayAnimationDuration:
-                                  Duration(milliseconds: 800),
+                              Duration(milliseconds: 800),
                               autoPlayCurve: Curves.fastOutSlowIn,
                               enlargeCenterPage: true,
                               enlargeFactor: 0.3,
@@ -70,6 +72,7 @@ class _FirstPageState extends State<FirstPage> {
                       ],
                     ),
                   ),
+
                 ),
                 Expanded(
                   child: Container(
@@ -87,7 +90,7 @@ class _FirstPageState extends State<FirstPage> {
                                   style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(20)),
+                                          BorderRadius.circular(20)),
                                       backgroundColor: Colors.white,
                                       side: BorderSide(
                                           color: Colors.white, width: 2.0)),
@@ -104,7 +107,7 @@ class _FirstPageState extends State<FirstPage> {
                                   ),
                                 ),
                                 Text(
-                                  'Test',
+                                  'Anket',
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 20),
                                 )
@@ -116,14 +119,15 @@ class _FirstPageState extends State<FirstPage> {
                                   style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(20),
+                                          BorderRadius.circular(20),
                                           side: BorderSide(
                                               color: Colors.white, width: 2.0)),
                                       backgroundColor: Colors.white),
                                   onPressed: () {},
                                   child: Icon(
                                     Icons.vaccines,
-                                    size: 70, color: Colors.blue[900],
+                                    size: 70,
+                                    color: Colors.blue[900],
                                   ),
                                 ),
                                 Text(
@@ -173,7 +177,7 @@ class _FirstPageState extends State<FirstPage> {
                                           color: Colors.white, width: 2.0),
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(20)),
+                                          BorderRadius.circular(20)),
                                       backgroundColor: Colors.white),
                                   onPressed: () {
                                     Navigator.push(
@@ -202,9 +206,14 @@ class _FirstPageState extends State<FirstPage> {
                                           side: BorderSide(
                                               color: Colors.white, width: 2.0),
                                           borderRadius:
-                                              BorderRadius.circular(20)),
+                                          BorderRadius.circular(20)),
                                       backgroundColor: Colors.white),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Stress()));
+                                  },
                                   child: Icon(
                                     Icons.nature_people_rounded,
                                     size: 70,
@@ -224,7 +233,7 @@ class _FirstPageState extends State<FirstPage> {
                                   style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(20),
+                                          BorderRadius.circular(20),
                                           side: BorderSide(
                                               color: Colors.white, width: 2.0)),
                                       backgroundColor: Colors.white),
@@ -256,93 +265,15 @@ class _FirstPageState extends State<FirstPage> {
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [buildHeader(context), buildMenuItems(context)],
+                children: [
+                  menu.buildHeader(context),
+                  menu.buildMenuItems(context)
+                ],
               ),
             ),
           ),
         )
       ],
-    );
-  }
-
-  Widget buildHeader(BuildContext context) => Container(
-        color: Colors.indigo[900],
-        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 30,
-            ),
-            CircleAvatar(
-              backgroundImage: AssetImage('assets/m.jpg'),
-              radius: 80,
-            ),
-            SizedBox(
-              height: 20,
-            )
-          ],
-        ),
-      );
-
-  Widget buildMenuItems(BuildContext context) => Column(
-        children: [
-          ListTile(
-            leading: Icon(Icons.home_outlined),
-            title: Text('Anasayfa'),
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => FirstPage()));
-            },
-          ),
-          buildDivider(),
-          ListTile(
-            leading: const Icon(Icons.pending_actions),
-            title: const Text('Test'),
-            onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Test()));
-            },
-          ),
-          buildDivider(),
-          ListTile(
-            leading: const Icon(Icons.vaccines),
-            title: const Text('İlaç Takip'),
-            onTap: () {},
-          ),
-          buildDivider(),
-          ListTile(
-            leading: const Icon(Icons.sports_gymnastics),
-            title: const Text('Egzersiz'),
-            onTap: () {},
-          ),
-          buildDivider(),
-          ListTile(
-            leading: const Icon(Icons.monitor_heart),
-            title: const Text('Kronik Hastalıklar'),
-            onTap: () {},
-          ),
-          buildDivider(),
-          ListTile(
-            leading: const Icon(Icons.mail),
-            title: const Text('Geri Bildirim'),
-            onTap: () {},
-          ),
-          buildDivider(),
-          ListTile(
-            leading: const Icon(Icons.exit_to_app),
-            title: const Text('Çıkış'),
-            onTap: () {
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-          ),
-          buildDivider(),
-        ],
-      );
-
-  Divider buildDivider() {
-    return Divider(
-      height: 10,
-      thickness: 1,
     );
   }
 }
