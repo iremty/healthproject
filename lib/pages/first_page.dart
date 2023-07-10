@@ -48,7 +48,7 @@ class _FirstPageState extends State<FirstPage> {
                     margin: EdgeInsets.symmetric(horizontal: 20),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Colors.white),
+                        color: Colors.white38),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

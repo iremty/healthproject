@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:healthproject/global.dart' as global;
 import 'package:healthproject/pages/first_page.dart';
+import 'package:healthproject/widgets/background_image.dart';
 
 import 'diseases.dart';
 
@@ -49,63 +50,90 @@ class _RadState extends State<Test> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.indigo[900],
-        title: const Text("Haftalık Anket"),
+        title: const Text("Haftalık Test"),
         centerTitle: true,
       ),
       body: Stack(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white70,
-            ),
-          ),
+          BackGroundImage1(),
           Column(
             children: [
               Expanded(
                 child: ListView.builder(
+
                   padding: EdgeInsets.all(5),
                   itemCount: dataList.length,
                   itemBuilder: (context, index) {
                     return Container(
+
                       color: Colors.transparent,
                       //color: Colors.green,
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 10,
+                            height: 15,
                           ),
-                          Text(
-                            sorular[index],
-                            style: TextStyle(
-                              fontSize: 20,
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.4),
+                                borderRadius: BorderRadius.circular(20),
+                                border: Border.all(
+                                    color: Color(0xffb1a237b), width: 4)),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          10, 2, 10, 5),
+                                      child: Column(
+                                        children: [
+                                          Text(
+                                            sorular[index],
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          Divider(
+                                            color:
+                                            Colors.black.withOpacity(0.7),
+                                            thickness: 1.00000001,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    buildRadio(index, 1),
+                                    buildText("1"),
+                                    buildSizedBox(),
+                                    buildRadio(index, 2),
+                                    buildText("2"),
+                                    buildSizedBox(),
+                                    buildRadio(index, 3),
+                                    buildText("3"),
+                                    buildSizedBox(),
+                                    buildRadio(index, 4),
+                                    buildText("4"),
+                                    buildSizedBox(),
+                                    buildRadio(index, 5),
+                                    buildText("5"),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              buildRadio(index, 1),
-                              buildText("1"),
-                              buildSizedBox(),
-                              buildRadio(index, 2),
-                              buildText("2"),
-                              buildSizedBox(),
-                              buildRadio(index, 3),
-                              buildText("3"),
-                              buildSizedBox(),
-                              buildRadio(index, 4),
-                              buildText("4"),
-                              buildSizedBox(),
-                              buildRadio(index, 5),
-                              buildText("5"),
-                            ],
-                          ),
-                          Divider(
-                            height: 10,
-                            color: Colors.blueGrey,
-                            thickness: 2,
-                          )
                         ],
                       ),
                     );
@@ -113,10 +141,11 @@ class _RadState extends State<Test> {
                 ),
               ),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Color(0xffb1a237b)),
                 onPressed: () {
                   FirebaseFirestore firestore = FirebaseFirestore.instance;
                   CollectionReference cevaplarBase =
-                      firestore.collection('cevaplar');
+                  firestore.collection('cevaplar');
                   for (int i = 0; i < sorucevap.length; i++) {
                     print(
                         'soru:${sorucevap[i].soru} cevap:${sorucevap[i].cevap}');
@@ -133,7 +162,7 @@ class _RadState extends State<Test> {
                   "Kaydet",
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.black,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -177,6 +206,12 @@ class _RadState extends State<Test> {
           });
         });
   }
+
+
+
+
+
+
 }
 
 class SoruCevap {
