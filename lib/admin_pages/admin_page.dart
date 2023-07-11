@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:healthproject/admin_pages/etkinlik.dart';
 import 'package:healthproject/admin_pages/hastalik_sonuc.dart';
 import 'package:healthproject/admin_pages/test_sonuc.dart';
 
@@ -152,7 +153,12 @@ class _AdminMenuState extends State<AdminMenu> {
                                       backgroundColor: Colors.white,
                                       side: BorderSide(
                                           color: Colors.white, width: 2.0)),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Etkinlik()));
+                                  },
                                   child: Icon(
                                     Icons.sports_gymnastics_outlined,
                                     size: 70,

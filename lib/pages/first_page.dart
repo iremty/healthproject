@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:healthproject/global.dart' as global;
 import 'package:healthproject/pages/diseases.dart';
+import 'package:healthproject/pages/etkinlik_kullanici.dart';
+import 'package:healthproject/pages/medicine.dart';
 import 'package:healthproject/pages/stress.dart';
 import 'package:healthproject/pages/test.dart';
 import 'package:healthproject/widgets/background_image.dart';
@@ -17,7 +19,8 @@ class _FirstPageState extends State<FirstPage> {
   List<Widget> items = [
     Image.asset('assets/tans.png'),
     Image.asset('assets/alerji.jpg'),
-    Image.asset('assets/migren.jpeg')
+    Image.asset('assets/migren.jpeg'),
+    Image.asset('assets/astm.png'),
   ];
   global.DrawerKullanici menu = global.DrawerKullanici();
   @override
@@ -63,7 +66,7 @@ class _FirstPageState extends State<FirstPage> {
                               autoPlay: true,
                               autoPlayInterval: Duration(seconds: 3),
                               autoPlayAnimationDuration:
-                              Duration(milliseconds: 800),
+                                  Duration(milliseconds: 800),
                               autoPlayCurve: Curves.fastOutSlowIn,
                               enlargeCenterPage: true,
                               enlargeFactor: 0.3,
@@ -72,7 +75,6 @@ class _FirstPageState extends State<FirstPage> {
                       ],
                     ),
                   ),
-
                 ),
                 Expanded(
                   child: Container(
@@ -90,7 +92,7 @@ class _FirstPageState extends State<FirstPage> {
                                   style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                          BorderRadius.circular(20)),
+                                              BorderRadius.circular(10)),
                                       backgroundColor: Colors.white,
                                       side: BorderSide(
                                           color: Colors.white, width: 2.0)),
@@ -119,11 +121,16 @@ class _FirstPageState extends State<FirstPage> {
                                   style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                          BorderRadius.circular(20),
+                                              BorderRadius.circular(10),
                                           side: BorderSide(
                                               color: Colors.white, width: 2.0)),
                                       backgroundColor: Colors.white),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Medicine()));
+                                  },
                                   child: Icon(
                                     Icons.vaccines,
                                     size: 70,
@@ -142,7 +149,7 @@ class _FirstPageState extends State<FirstPage> {
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20),
+                                        borderRadius: BorderRadius.circular(10),
                                       ),
                                       backgroundColor: Colors.white,
                                       side: BorderSide(
@@ -177,7 +184,7 @@ class _FirstPageState extends State<FirstPage> {
                                           color: Colors.white, width: 2.0),
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                          BorderRadius.circular(20)),
+                                              BorderRadius.circular(10)),
                                       backgroundColor: Colors.white),
                                   onPressed: () {
                                     Navigator.push(
@@ -206,7 +213,7 @@ class _FirstPageState extends State<FirstPage> {
                                           side: BorderSide(
                                               color: Colors.white, width: 2.0),
                                           borderRadius:
-                                          BorderRadius.circular(20)),
+                                              BorderRadius.circular(10)),
                                       backgroundColor: Colors.white),
                                   onPressed: () {
                                     Navigator.push(
@@ -233,19 +240,25 @@ class _FirstPageState extends State<FirstPage> {
                                   style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                          BorderRadius.circular(20),
+                                              BorderRadius.circular(10),
                                           side: BorderSide(
                                               color: Colors.white, width: 2.0)),
                                       backgroundColor: Colors.white),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                etkKullanici()));
+                                  },
                                   child: Icon(
-                                    Icons.ice_skating,
+                                    Icons.celebration,
                                     size: 70,
                                     color: Colors.blue[900],
                                   ),
                                 ),
                                 Text(
-                                  'Test\n',
+                                  'Etkinlikler\n',
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 20),
                                 )

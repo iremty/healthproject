@@ -21,7 +21,7 @@ class _KronikState extends State<Kronik> {
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
-      BackGroundImage1(),
+      BackGroundImage4(),
       Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
@@ -32,24 +32,25 @@ class _KronikState extends State<Kronik> {
           padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 60),
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12.0),
-                child: Text(
-                  "Hastalıklarınız nelerdir?",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
+              Text(
+                "Hastalıklarınız nelerdir?",
+                style: TextStyle(
+                  backgroundColor: Colors.blue[100]?.withOpacity(0.5),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 1.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.indigo[900]?.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
+              SizedBox(height: 10),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.indigo[900]?.withOpacity(0.4),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 12.0),
                   child: TextFormField(
+
+                    maxLines: null,
                     onChanged: (val) {
                       setState(() {
                         hastalikText = val;
@@ -58,9 +59,7 @@ class _KronikState extends State<Kronik> {
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.symmetric(vertical: 20),
                       border: InputBorder.none,
-                      prefixIcon: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                      ),
+
                       hintStyle: kBodyText,
                     ),
                     style: TextStyle(color: Colors.black),
@@ -70,10 +69,14 @@ class _KronikState extends State<Kronik> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12.0),
                 child: Text(
+                  textAlign: TextAlign.center,
                   "Şirketten, bu konuda beklentileriniz nelerdir?",
                   style: TextStyle(
+
+                    backgroundColor: Colors.blue[100]?.withOpacity(0.5),
                     fontWeight: FontWeight.bold,
-                    fontSize: 18,
+                    fontSize: 22,
+
                   ),
                 ),
               ),
@@ -82,28 +85,29 @@ class _KronikState extends State<Kronik> {
                 child: Container(
                   height: 200,
                   decoration: BoxDecoration(
-                    color: Colors.indigo[900]?.withOpacity(0.2),
+                    color: Colors.indigo[900]?.withOpacity(0.4),
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  child: TextFormField(
-                    onChanged: (val) {
-                      setState(() {
-                        istekText = val;
-                      });
-                    },
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(vertical: 20),
-                      border: InputBorder.none,
-                      prefixIcon: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: TextFormField(
+                      onChanged: (val) {
+                        setState(() {
+                          istekText = val;
+                        });
+                      },
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(vertical: 20),
+                        border: InputBorder.none,
+
+                        hintStyle: kBodyText,
                       ),
-                      hintStyle: kBodyText,
+                      style: TextStyle(color: Colors.black),
                     ),
-                    style: TextStyle(color: Colors.black),
                   ),
                 ),
               ),
-              Expanded(child: Container()),
+
               Align(
                 alignment: Alignment.bottomCenter,
                 child: ElevatedButton(
@@ -113,6 +117,7 @@ class _KronikState extends State<Kronik> {
                   style: ButtonStyle(
                     textStyle: MaterialStateProperty.all<TextStyle>(
                       TextStyle(fontSize: 20),
+
                     ),
                     backgroundColor:
                         MaterialStateProperty.all<Color>(Colors.black45),

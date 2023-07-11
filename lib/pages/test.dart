@@ -50,7 +50,7 @@ class _RadState extends State<Test> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.indigo[900],
-        title: const Text("Haftalık Test"),
+        title: const Text("Haftalık Anket"),
         centerTitle: true,
       ),
       body: Stack(
@@ -60,12 +60,10 @@ class _RadState extends State<Test> {
             children: [
               Expanded(
                 child: ListView.builder(
-
                   padding: EdgeInsets.all(5),
                   itemCount: dataList.length,
                   itemBuilder: (context, index) {
                     return Container(
-
                       color: Colors.transparent,
                       //color: Colors.green,
                       child: Column(
@@ -105,7 +103,7 @@ class _RadState extends State<Test> {
                                           ),
                                           Divider(
                                             color:
-                                            Colors.black.withOpacity(0.7),
+                                                Colors.black.withOpacity(0.7),
                                             thickness: 1.00000001,
                                           )
                                         ],
@@ -141,11 +139,12 @@ class _RadState extends State<Test> {
                 ),
               ),
               ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: Color(0xffb1a237b)),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xffb1a237b)),
                 onPressed: () {
                   FirebaseFirestore firestore = FirebaseFirestore.instance;
                   CollectionReference cevaplarBase =
-                  firestore.collection('cevaplar');
+                      firestore.collection('cevaplar');
                   for (int i = 0; i < sorucevap.length; i++) {
                     print(
                         'soru:${sorucevap[i].soru} cevap:${sorucevap[i].cevap}');
@@ -206,12 +205,6 @@ class _RadState extends State<Test> {
           });
         });
   }
-
-
-
-
-
-
 }
 
 class SoruCevap {

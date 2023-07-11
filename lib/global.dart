@@ -3,6 +3,7 @@ library healthproject.global;
 import 'package:flutter/material.dart';
 import 'package:healthproject/pages/diseases.dart';
 import 'package:healthproject/pages/first_page.dart';
+import 'package:healthproject/pages/geribild.dart';
 import 'package:healthproject/pages/stress.dart';
 import 'package:healthproject/pages/test.dart';
 
@@ -81,7 +82,11 @@ class DrawerKullanici {
           ListTile(
             leading: const Icon(Icons.mail),
             title: const Text('Geri Bildirim'),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => GeriBildirim()));
+            },
+
           ),
           buildDivider(),
           ListTile(
