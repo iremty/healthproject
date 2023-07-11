@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:healthproject/pages/diseases.dart';
 import 'package:healthproject/pages/first_page.dart';
 import 'package:healthproject/pages/geribild.dart';
+import 'package:healthproject/pages/medicine.dart';
 import 'package:healthproject/pages/stress.dart';
 import 'package:healthproject/pages/test.dart';
 
@@ -54,7 +55,10 @@ class DrawerKullanici {
           ListTile(
             leading: const Icon(Icons.vaccines),
             title: const Text('İlaç Takip'),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Medicine()));
+            },
           ),
           buildDivider(),
           ListTile(

@@ -35,6 +35,7 @@ class _KronikState extends State<Kronik> {
               Text(
                 "Hastalıklarınız nelerdir?",
                 style: TextStyle(
+
                   backgroundColor: Colors.blue[100]?.withOpacity(0.5),
                   fontWeight: FontWeight.bold,
                   fontSize: 22,

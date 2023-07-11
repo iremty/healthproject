@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:healthproject/widgets/background_image.dart';
 import 'package:timer_count_down/timer_count_down.dart';
 
@@ -34,12 +35,12 @@ class _YogaPageState extends State<YogaPage> {
               children: [
                 Container(
                   padding: EdgeInsets.only(top: 30),
-                  child: Text(
-                    "Süreyi Başlat ve Yoga Hareketlerini \n Uygulamaya Başla",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                    textAlign: TextAlign.center,
+                  child: Text(textAlign: TextAlign.center,
+                    "Süreyi Baslat ve\n Yoga Hareketlerini Uygulamaya Basla",
+                    style: GoogleFonts.yeonSung(fontWeight: FontWeight.bold, fontSize: 20)),
+
                   ),
-                ),
+
                 Divider(height: 15,thickness: 3,color: Colors.black12,),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -60,16 +61,17 @@ class _YogaPageState extends State<YogaPage> {
                           enlargeFactor: 0.3,
                           scrollDirection: Axis.horizontal,
                         )),
-                    SizedBox(height: 25),
+                    //SizedBox(height: 5),
                     Container(
                       height: 130,
                       child: CarouselSlider(
                         items: yazi().items,
                         options: CarouselOptions(
                           aspectRatio: 4 / 2,
-
+viewportFraction: 0.9
+                          ,
                           initialPage: 0,
-                          enableInfiniteScroll: true,
+                          enableInfiniteScroll: false,
                           reverse: false,
                           autoPlay: yoga,
                           autoPlayInterval: Duration(seconds: 15),
@@ -229,12 +231,23 @@ class yazi {
   List<Widget> items = [
     Text(
       textAlign: TextAlign.center,
-      "Bağdaş kurarak oturun,sırtınız düz bir şekilde sola dönün,\n sağ elinizi sol dizinize getirin ve sol elinizi arkanızdaki matın üzerine koyun.",
+      "Bağdaş kurarak oturun,Sırtınız düz bir şekilde sola dönün,\n sağ elinizi sol dizinize getirin ve sol elinizi arkanızdaki matın üzerine koyun.",
+      style:TextStyle(fontWeight: FontWeight.bold, color: Colors.black,fontSize: 15),
+
+    ),
+    Text(
+      textAlign: TextAlign.center,
+      "Bağdaş kurarak oturun,Sırtınız düz bir şekilde sağa dönün,\n sol elinizi sağ dizinize getirin ve sağ elinizi arkanızdaki matın üzerine koyun.",
       style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black,fontSize: 15),
     ),
     Text(
       textAlign: TextAlign.center,
-      "Bağdaş kurarak oturun,sırtınız düz bir şekilde sağa dönün,\n sol elinizi sağ dizinize getirin ve sağ elinizi arkanızdaki matın üzerine koyun.",
+      "Kalçanız topuklarınızın üzerinde olacak şekilde diz çökün.\n Öne doğru eğilin ve alnınızı mata doğru getirin.\n Elleriniz matın üzerinde yüzüstü olacak şekilde kollarınızı önünüzde gerin.",
+      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black,fontSize: 15),
+    ),
+    Text(
+      textAlign: TextAlign.center,
+      "Elleriniz ve dizleriniz yerde olacak şekilde başlayın,\n dizlerinizi mattan kaldırın ve kalçanızın uç noktalarını yukarı doğru çekin.\n Kollarınızı düz bir şekilde itin ve topuklarınızı matın üzerine geri itin. \n Başınızı ellerinizin arasında tutmalısınız.",
       style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black,fontSize: 15),
     ),
   ];
