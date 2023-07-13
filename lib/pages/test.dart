@@ -49,18 +49,18 @@ class _RadState extends State<Test> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.indigo[900],
+        backgroundColor: Colors.blue[900],
+        elevation: 0,
         title: const Text("Haftalık Anket"),
-        centerTitle: true,
       ),
       body: Stack(
         children: [
-          BackGroundImage1(),
+          //BackGroundImage1(),
           Column(
             children: [
               Expanded(
                 child: ListView.builder(
-                  padding: EdgeInsets.all(5),
+                  padding: EdgeInsets.all(12),
                   itemCount: dataList.length,
                   itemBuilder: (context, index) {
                     return Container(
@@ -69,28 +69,25 @@ class _RadState extends State<Test> {
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 15,
+                            height: 26,
                           ),
                           Container(
                             decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.4),
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(
-                                    color: Color(0xffb1a237b), width: 4)),
+                              border: Border.all(color: Colors.black,width: 4),
+                              color: Colors.white,
+                            ),
                             child: Column(
                               children: [
                                 SizedBox(
-                                  height: 10,
+                                  height: 1,
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.all(5.0),
+                                  padding: const EdgeInsets.all(10.0),
                                   child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                    ),
+
                                     child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          10, 2, 10, 5),
+                                      padding:
+                                          const EdgeInsets.fromLTRB(7, 2, 7, 5),
                                       child: Column(
                                         children: [
                                           Text(
@@ -138,9 +135,16 @@ class _RadState extends State<Test> {
                   },
                 ),
               ),
+              SizedBox(
+                height: 10,
+              ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xffb1a237b)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        side: BorderSide(color: Colors.black, width: 2)),
+                    minimumSize: Size(200, 40),
+                    backgroundColor: Colors.white),
                 onPressed: () {
                   FirebaseFirestore firestore = FirebaseFirestore.instance;
                   CollectionReference cevaplarBase =
@@ -161,15 +165,17 @@ class _RadState extends State<Test> {
                   "Kaydet",
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.white,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              )
+              ),
+              SizedBox(height: 25),
             ],
           ),
         ],
       ),
+      backgroundColor: Colors.blue[900],
       drawer: Drawer(
         child: SingleChildScrollView(
           child: Column(

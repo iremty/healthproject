@@ -23,25 +23,28 @@ class _YogaPageState extends State<YogaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue[900],
-        title: Text('Haftalık Yoga'),
-      ),
       body: Stack(
         children: [
           BackGroundImage1(),
           SafeArea(
             child: Column(
               children: [
+                SizedBox(
+                  height: 20,
+                ),
                 Container(
                   padding: EdgeInsets.only(top: 30),
-                  child: Text(textAlign: TextAlign.center,
-                    "Süreyi Baslat ve\n Yoga Hareketlerini Uygulamaya Basla",
-                    style: GoogleFonts.yeonSung(fontWeight: FontWeight.bold, fontSize: 20)),
-
-                  ),
-
-                Divider(height: 15,thickness: 3,color: Colors.black12,),
+                  child: Text(
+                      textAlign: TextAlign.center,
+                      "Süreyi Baslat ve\n Yoga Hareketlerini Uygulamaya Basla",
+                      style: GoogleFonts.abhayaLibre(
+                          fontWeight: FontWeight.bold, fontSize: 20)),
+                ),
+                Divider(
+                  height: 15,
+                  thickness: 3,
+                  color: Colors.black12,
+                ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -63,28 +66,30 @@ class _YogaPageState extends State<YogaPage> {
                         )),
                     //SizedBox(height: 5),
                     Container(
-                      height: 130,
-                      child: CarouselSlider(
-                        items: yazi().items,
-                        options: CarouselOptions(
-                          aspectRatio: 4 / 2,
-viewportFraction: 0.9
-                          ,
-                          initialPage: 0,
-                          enableInfiniteScroll: false,
-                          reverse: false,
-                          autoPlay: yoga,
-                          autoPlayInterval: Duration(seconds: 15),
-                          autoPlayAnimationDuration: Duration(seconds: 1),
-                          autoPlayCurve: Curves.fastOutSlowIn,
-                          enlargeCenterPage: true,
-                          enlargeFactor: 0.3,
-                          scrollDirection: Axis.horizontal,
+                      height: 150,
+                      child: Expanded(
+                        child: CarouselSlider(
+                          items: yazi().items,
+                          options: CarouselOptions(
+                            aspectRatio: 4 / 2,
+                            viewportFraction: 0.9,
+                            initialPage: 0,
+                            enableInfiniteScroll: false,
+                            reverse: false,
+                            autoPlay: yoga,
+                            autoPlayInterval: Duration(seconds: 15),
+                            autoPlayAnimationDuration: Duration(seconds: 1),
+                            autoPlayCurve: Curves.fastOutSlowIn,
+                            enlargeCenterPage: true,
+                            enlargeFactor: 0.3,
+                            scrollDirection: Axis.horizontal,
+                          ),
                         ),
                       ),
                     ),
                   ],
                 ),
+                SizedBox(height: 15),
                 Container(
                   padding: EdgeInsets.only(bottom: 1.0),
                   child: Column(
@@ -123,7 +128,9 @@ viewportFraction: 0.9
                             },
                             child: Icon(Icons.play_arrow),
                           ),
-                          SizedBox(width: 10.0),
+                          SizedBox(
+                            width: 10.0,
+                          ),
                           ElevatedButton(
                             style: ButtonStyle(
                                 backgroundColor:
@@ -232,23 +239,26 @@ class yazi {
     Text(
       textAlign: TextAlign.center,
       "Bağdaş kurarak oturun,Sırtınız düz bir şekilde sola dönün,\n sağ elinizi sol dizinize getirin ve sol elinizi arkanızdaki matın üzerine koyun.",
-      style:TextStyle(fontWeight: FontWeight.bold, color: Colors.black,fontSize: 15),
-
+      style: TextStyle(
+          fontWeight: FontWeight.bold, color: Colors.black, fontSize: 15),
     ),
     Text(
       textAlign: TextAlign.center,
       "Bağdaş kurarak oturun,Sırtınız düz bir şekilde sağa dönün,\n sol elinizi sağ dizinize getirin ve sağ elinizi arkanızdaki matın üzerine koyun.",
-      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black,fontSize: 15),
+      style: TextStyle(
+          fontWeight: FontWeight.bold, color: Colors.black, fontSize: 15),
     ),
     Text(
       textAlign: TextAlign.center,
       "Kalçanız topuklarınızın üzerinde olacak şekilde diz çökün.\n Öne doğru eğilin ve alnınızı mata doğru getirin.\n Elleriniz matın üzerinde yüzüstü olacak şekilde kollarınızı önünüzde gerin.",
-      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black,fontSize: 15),
+      style: TextStyle(
+          fontWeight: FontWeight.bold, color: Colors.black, fontSize: 15),
     ),
     Text(
       textAlign: TextAlign.center,
       "Elleriniz ve dizleriniz yerde olacak şekilde başlayın,\n dizlerinizi mattan kaldırın ve kalçanızın uç noktalarını yukarı doğru çekin.\n Kollarınızı düz bir şekilde itin ve topuklarınızı matın üzerine geri itin. \n Başınızı ellerinizin arasında tutmalısınız.",
-      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black,fontSize: 15),
+      style: TextStyle(
+          fontWeight: FontWeight.bold, color: Colors.black, fontSize: 15),
     ),
   ];
 }

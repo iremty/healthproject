@@ -17,7 +17,7 @@ class _YogaState extends State<Yoga> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[900],
-        title: Text("Nefes Egzersizi"),
+        title: Text("Haftalık Yoga Egzersizi"),
       ),
       body: Stack(
         children: [
@@ -33,26 +33,24 @@ class _YogaState extends State<Yoga> {
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => YogaPage()),);
+                            context,
+                            MaterialPageRoute(builder: (context) => YogaPage()),
+                          );
                         },
                         child: Text(
                           "Başlat",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            fontSize: 25
-                          ),
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              fontSize: 25),
                         ),
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.black12,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          elevation: 5,
-                          minimumSize: Size(130, 50)
-
-                        ),
+                            primary: Colors.white70,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            elevation: 5,
+                            minimumSize: Size(130, 50)),
                       ),
                     ),
                   ),

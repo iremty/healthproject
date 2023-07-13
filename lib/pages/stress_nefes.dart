@@ -16,7 +16,8 @@ class _NefesEgzersiziState extends State<NefesEgzersizi> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[900],
-        title: Text("Nefes Egzersizi"),
+       title: Text("Nefes Egzersizi"),
+       elevation: 0,
       ),
       body: Stack(
         children: [
@@ -156,7 +157,8 @@ class NefesAlma extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          BackGroundImage1(),
+
+          BackGroundImage6(),
           SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -165,7 +167,7 @@ class NefesAlma extends StatelessWidget {
                   margin: EdgeInsets.only(top: 20, right: 5, left: 5),
                   padding: EdgeInsets.only(left: 10),
                   width: 200,
-                  height: 75,
+                  height: 50,
                   decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadiusDirectional.circular(16),
@@ -189,7 +191,7 @@ class NefesAlma extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadiusDirectional.circular(16),
-                    color: Colors.indigo[300],
+                    color: Colors.blue[300],
                   ),
                   child: Center(
                     child: Text(
@@ -206,7 +208,7 @@ class NefesAlma extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadiusDirectional.circular(16),
-                    color: Colors.indigo[400],
+                    color: Colors.blue[500],
                   ),
                   child: Center(
                     child: Text(
@@ -223,7 +225,7 @@ class NefesAlma extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadiusDirectional.circular(16),
-                    color: Colors.indigo[500],
+                    color: Colors.blue[700],
                   ),
                   child: Center(
                     child: Text(
@@ -240,7 +242,7 @@ class NefesAlma extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadiusDirectional.circular(16),
-                    color: Colors.indigo[800],
+                    color: Colors.blue[900],
                   ),
                   child: Center(
                     child: Text(
@@ -267,6 +269,7 @@ class NefesAlma extends StatelessWidget {
           ),
         ],
       ),
+      backgroundColor: Colors.white,
     );
   }
 }

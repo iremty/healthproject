@@ -3,11 +3,13 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:healthproject/admin_pages/test_sonuc.dart';
 import 'package:healthproject/global.dart' as global;
 import 'package:healthproject/widgets/background_image.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../colors.dart';
+import 'admin_page.dart';
 
 class Etkinlik extends StatefulWidget {
   const Etkinlik({super.key});
@@ -145,10 +147,7 @@ class _EtkinlikState extends State<Etkinlik> {
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                menu.buildHeader(context),
-                menu.buildMenuItems(context)
-              ],
+              children: [buildHeader(context), buildMenuItems(context)],
             ),
           ),
         ),
@@ -202,5 +201,71 @@ class _EtkinlikState extends State<Etkinlik> {
         ),
       );
     }
+  }
+
+  Widget buildHeader(BuildContext context) => Container(
+    color: Colors.indigo[900],
+    padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+    child: Column(
+      children: [
+        SizedBox(
+          height: 30,
+        ),
+        CircleAvatar(
+          backgroundImage: AssetImage('assets/m.jpg'),
+          radius: 80,
+        ),
+        SizedBox(
+          height: 20,
+        )
+      ],
+    ),
+  );
+
+  Widget buildMenuItems(BuildContext context) => Column(
+    children: [
+      ListTile(
+        leading: Icon(Icons.home_outlined),
+        title: Text('Anasayfa'),
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => AdminMenu()));
+        },
+      ),
+      buildDivider(),
+      ListTile(
+        leading: const Icon(Icons.pending_actions),
+        title: const Text('Test Sonuçları'),
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => SonucClass()));
+        },
+      ),
+      buildDivider(),
+      ListTile(
+        leading: const Icon(Icons.celebration),
+        title: const Text('Etkinlikler'),
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => Etkinlik()));
+        },
+      ),
+      buildDivider(),
+      ListTile(
+        leading: const Icon(Icons.exit_to_app),
+        title: const Text('Çıkış'),
+        onTap: () {
+          Navigator.of(context).popUntil((route) => route.isFirst);
+        },
+      ),
+      buildDivider(),
+    ],
+  );
+
+  Divider buildDivider() {
+    return Divider(
+      height: 10,
+      thickness: 1,
+    );
   }
 }

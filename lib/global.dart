@@ -1,7 +1,10 @@
 library healthproject.global;
 
 import 'package:flutter/material.dart';
+import 'package:healthproject/admin_pages/etkinlik.dart';
 import 'package:healthproject/pages/diseases.dart';
+import 'package:healthproject/pages/etkinlik_kullanici.dart';
+import 'package:healthproject/pages/exercise.dart';
 import 'package:healthproject/pages/first_page.dart';
 import 'package:healthproject/pages/geribild.dart';
 import 'package:healthproject/pages/medicine.dart';
@@ -64,7 +67,10 @@ class DrawerKullanici {
           ListTile(
             leading: const Icon(Icons.sports_gymnastics),
             title: const Text('Egzersiz'),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Exercise()));
+            },
           ),
           buildDivider(),
           ListTile(
@@ -76,10 +82,19 @@ class DrawerKullanici {
           buildDivider(),
           ListTile(
             leading: const Icon(Icons.monitor_heart),
-            title: const Text('Kronik Hastalıklar'),
+            title: const Text(' Hastalıklar'),
             onTap: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Kronik()));
+            },
+          ),
+          buildDivider(),
+          ListTile(
+            leading: const Icon(Icons.celebration),
+            title: const Text(' Etkinlikler'),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => etkKullanici()));
             },
           ),
           buildDivider(),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:healthproject/pages/test.dart';
 
 import 'admin_page.dart';
+import 'etkinlik.dart';
 
 class SonucClass extends StatefulWidget {
   const SonucClass({super.key});
@@ -237,6 +238,15 @@ class _SonucClassState extends State<SonucClass> {
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => SonucClass()));
+            },
+          ),
+          buildDivider(),
+          ListTile(
+            leading: const Icon(Icons.celebration),
+            title: const Text('Etkinlikler'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Etkinlik()));
             },
           ),
           buildDivider(),

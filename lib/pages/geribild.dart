@@ -48,7 +48,7 @@ class _GeriBildirimState extends State<GeriBildirim> {
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.only(left:12.0),
+                    padding: const EdgeInsets.only(left: 12.0),
                     child: TextFormField(
                       onChanged: (val) {
                         setState(() {
@@ -58,7 +58,6 @@ class _GeriBildirimState extends State<GeriBildirim> {
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.symmetric(vertical: 20),
                         border: InputBorder.none,
-
                         hintStyle: kBodyText,
                       ),
                       style: TextStyle(color: Colors.black),
@@ -66,7 +65,7 @@ class _GeriBildirimState extends State<GeriBildirim> {
                   ),
                 ),
               ),
-              Expanded(child: Container()),
+
               Align(
                 alignment: Alignment.bottomCenter,
                 child: ElevatedButton(
@@ -78,7 +77,7 @@ class _GeriBildirimState extends State<GeriBildirim> {
                       TextStyle(fontSize: 20),
                     ),
                     backgroundColor:
-                    MaterialStateProperty.all<Color>(Colors.black45),
+                        MaterialStateProperty.all<Color>(Colors.black45),
                   ),
                   child: Text('Kaydet'),
                 ),

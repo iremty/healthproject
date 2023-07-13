@@ -15,10 +15,9 @@ class AdminMenu extends StatefulWidget {
 
 class _AdminMenuState extends State<AdminMenu> {
   List<Widget> items = [
-    //  Image.asset('assets/m.jpg'),
     Image.asset('assets/login.jpeg'),
     Image.asset('assets/alerji.jpg'),
-    Image.asset('assets/migren.jpeg')
+    Image.asset('assets/astm.png'),
   ];
 
   @override
@@ -64,7 +63,7 @@ class _AdminMenuState extends State<AdminMenu> {
                               autoPlay: true,
                               autoPlayInterval: Duration(seconds: 3),
                               autoPlayAnimationDuration:
-                              Duration(milliseconds: 800),
+                                  Duration(milliseconds: 800),
                               autoPlayCurve: Curves.fastOutSlowIn,
                               enlargeCenterPage: true,
                               enlargeFactor: 0.3,
@@ -90,7 +89,7 @@ class _AdminMenuState extends State<AdminMenu> {
                                   style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                          BorderRadius.circular(20)),
+                                              BorderRadius.circular(20)),
                                       backgroundColor: Colors.white,
                                       side: BorderSide(
                                           color: Colors.white, width: 2.0)),
@@ -120,7 +119,7 @@ class _AdminMenuState extends State<AdminMenu> {
                                   style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                          BorderRadius.circular(20),
+                                              BorderRadius.circular(20),
                                           side: BorderSide(
                                               color: Colors.white, width: 2.0)),
                                       backgroundColor: Colors.white),
@@ -160,7 +159,7 @@ class _AdminMenuState extends State<AdminMenu> {
                                             builder: (context) => Etkinlik()));
                                   },
                                   child: Icon(
-                                    Icons.sports_gymnastics_outlined,
+                                    Icons.celebration,
                                     size: 70,
                                     color: Colors.blue[900],
                                   ),
@@ -199,54 +198,63 @@ class _AdminMenuState extends State<AdminMenu> {
   }
 
   Widget buildHeader(BuildContext context) => Container(
-    color: Colors.indigo[900],
-    padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-    child: Column(
-      children: [
-        SizedBox(
-          height: 30,
+        color: Colors.indigo[900],
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 30,
+            ),
+            CircleAvatar(
+              backgroundImage: AssetImage('assets/m.jpg'),
+              radius: 80,
+            ),
+            SizedBox(
+              height: 20,
+            )
+          ],
         ),
-        CircleAvatar(
-          backgroundImage: AssetImage('assets/m.jpg'),
-          radius: 80,
-        ),
-        SizedBox(
-          height: 20,
-        )
-      ],
-    ),
-  );
+      );
 
   Widget buildMenuItems(BuildContext context) => Column(
-    children: [
-      ListTile(
-        leading: Icon(Icons.home_outlined),
-        title: Text('Anasayfa'),
-        onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => AdminMenu()));
-        },
-      ),
-      buildDivider(),
-      ListTile(
-        leading: const Icon(Icons.pending_actions),
-        title: const Text('Test Sonuçları'),
-        onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => SonucClass()));
-        },
-      ),
-      buildDivider(),
-      ListTile(
-        leading: const Icon(Icons.exit_to_app),
-        title: const Text('Çıkış'),
-        onTap: () {
-          Navigator.of(context).popUntil((route) => route.isFirst);
-        },
-      ),
-      buildDivider(),
-    ],
-  );
+        children: [
+          ListTile(
+            leading: Icon(Icons.home_outlined),
+            title: Text('Anasayfa'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => AdminMenu()));
+            },
+          ),
+          buildDivider(),
+          ListTile(
+            leading: const Icon(Icons.pending_actions),
+            title: const Text('Test Sonuçları'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SonucClass()));
+            },
+          ),
+          buildDivider(),
+          ListTile(
+            leading: const Icon(Icons.celebration),
+            title: const Text('Etkinlikler'),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Etkinlik()));
+            },
+          ),
+          buildDivider(),
+          ListTile(
+            leading: const Icon(Icons.exit_to_app),
+            title: const Text('Çıkış'),
+            onTap: () {
+              Navigator.of(context).popUntil((route) => route.isFirst);
+            },
+          ),
+          buildDivider(),
+        ],
+      );
 
   Divider buildDivider() {
     return Divider(

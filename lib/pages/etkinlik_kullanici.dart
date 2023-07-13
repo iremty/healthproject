@@ -49,13 +49,13 @@ class _RadState extends State<etkKullanici> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.indigo[900],
+        backgroundColor: Colors.blue[900],
         title: const Text("Etkinlikler"),
-        centerTitle: true,
+        elevation: 0,
       ),
       body: Stack(
         children: [
-          BackGroundImage1(),
+          //BackGroundImage1(),
           Column(
             children: [
               Expanded(
@@ -67,9 +67,8 @@ class _RadState extends State<etkKullanici> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(
-                                    color: Color(0xffb1a237b), width: 5)),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Column(
@@ -77,85 +76,49 @@ class _RadState extends State<etkKullanici> {
                                   Container(
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
-                                      color: Colors.white38,
+                                      color: Colors.white54,
                                     ),
-                                    width: 800,
+                                    width: 400,
                                     child: Column(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.center,
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsets.all(10.0),
+                                          padding: const EdgeInsets.fromLTRB(
+                                              0, 2, 0, 20),
                                           child: Image.network(
                                             fotolar[index],
-                                            width: 250,
-                                            height: 250,
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color:
-                                      Colors.indigo[900]?.withOpacity(0.6),
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(15.0),
-                                          child: Text(
-                                            '${etkAd[index]}',
-                                            style: TextStyle(
+                                        Text(
+                                          '${etkAd[index]}',
+                                          style: TextStyle(
                                               fontSize: 20,
-                                              color: Colors.white,
-                                            ),
-                                          ),
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold),
                                         ),
-                                      ],
-                                    ),
-                                    width: 800,
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color:
-                                      Colors.indigo[900]?.withOpacity(0.6),
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.center,
-                                      children: [
                                         Padding(
-                                          padding: const EdgeInsets.all(15.0),
+                                          padding: const EdgeInsets.fromLTRB(
+                                              20, 0, 15, 20),
                                           child: Text(
                                             '${aciklama[index]}',
                                             style: TextStyle(
                                               fontSize: 20,
-                                              color: Colors.white,
+                                              color: Colors.black,
                                             ),
                                           ),
                                         ),
                                       ],
                                     ),
-                                    width: 800,
+                                  ),
+                                  SizedBox(
+                                    height: 10,
                                   ),
                                 ],
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 20,
-                          )
+                            height: 10,
+                          ),
                         ],
                       );
                     }),
@@ -164,6 +127,7 @@ class _RadState extends State<etkKullanici> {
           ),
         ],
       ),
+      backgroundColor: Colors.grey[300],
       drawer: Drawer(
         child: SingleChildScrollView(
           child: Column(

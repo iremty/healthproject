@@ -1,6 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:healthproject/admin_pages/test_sonuc.dart';
 import 'package:healthproject/widgets/background_image.dart';
+
+import 'admin_page.dart';
+import 'etkinlik.dart';
 
 class Hastalik extends StatefulWidget {
   const Hastalik({super.key});
@@ -47,194 +51,267 @@ class _HastalikState extends State<Hastalik> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.indigo[900],
-            title: const Text("Kronik Hastalıklar"),
-            centerTitle: true,
-          ),
-          body: Stack(
-            children: [
-              BackGroundImage1(),
-              Column(
-                children: [
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      padding: EdgeInsets.all(5),
-                      itemCount: dataList.length,
-                      itemBuilder: (context, index) {
-                        return Column(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(
-                                      color: Color(0xffb1a237b), width: 5)),
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                            color: Colors.white,
-                                          ),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Expanded(
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              10.0),
-                                                      child: Text(
-                                                        'Kullanıcı:  ${kisi[index]} ',
-                                                        style: TextStyle(
-                                                          fontSize: 20,
-                                                          color: Colors
-                                                              .indigo[900],
-                                                        ),
+        appBar: AppBar(
+          backgroundColor: Colors.indigo[900],
+          title: const Text("Kronik Hastalıklar"),
+
+        ),
+        body: Stack(
+          children: [
+            BackGroundImage1(),
+            Column(
+              children: [
+                SizedBox(
+                  height: 5,
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    padding: EdgeInsets.all(5),
+                    itemCount: dataList.length,
+                    itemBuilder: (context, index) {
+                      return Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                border: Border.all(
+                                    color: Color(0xffb1a237b), width: 5)),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                          color: Colors.white,
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Expanded(
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            10.0),
+                                                    child: Text(
+                                                      'Kullanıcı:  ${kisi[index]} ',
+                                                      style: TextStyle(
+                                                        fontSize: 20,
+                                                        color:
+                                                            Colors.indigo[900],
                                                       ),
                                                     ),
                                                   ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                          width: 800,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
                                         ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                            color: Colors.white,
-                                          ),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Expanded(
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              10.0),
-                                                      child: Text(
-                                                        'Hastalıkları:  ${hastalik[index]}',
-                                                        style: TextStyle(
-                                                          fontSize: 20,
-                                                          color: Colors
-                                                              .indigo[900],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                          width: 800,
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                            color: Colors.white,
-                                          ),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Expanded(
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              10.0),
-                                                      child: Text(
-                                                        'Çözüm Önerisi:  ${istek[index]}',
-                                                        style: TextStyle(
-                                                          fontSize: 20,
-                                                          color: Colors
-                                                              .indigo[900],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                          width: 800,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(bottom: 8),
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          backgroundColor: Color(0xffb1a237b)),
-                                      onPressed: () async {
-                                        await dataList[index]
-                                            .reference
-                                            .delete();
-                                        kisi.clear();
-                                        hastalik.clear();
-                                        istek.clear();
-                                        dataList.clear();
-                                        fetchData();
-                                        setState(() {});
-                                      },
-                                      child: Text(
-                                        'Çözüldü',
-                                        style: TextStyle(fontSize: 20),
+                                        width: 800,
                                       ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                          color: Colors.white,
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Expanded(
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            10.0),
+                                                    child: Text(
+                                                      'Hastalıkları:  ${hastalik[index]}',
+                                                      style: TextStyle(
+                                                        fontSize: 20,
+                                                        color:
+                                                            Colors.indigo[900],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        width: 800,
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                          color: Colors.white,
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Expanded(
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            10.0),
+                                                    child: Text(
+                                                      'Çözüm Önerisi:  ${istek[index]}',
+                                                      style: TextStyle(
+                                                        fontSize: 20,
+                                                        color:
+                                                            Colors.indigo[900],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        width: 800,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 8),
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: Color(0xffb1a237b)),
+                                    onPressed: () async {
+                                      await dataList[index].reference.delete();
+                                      kisi.clear();
+                                      hastalik.clear();
+                                      istek.clear();
+                                      dataList.clear();
+                                      fetchData();
+                                      setState(() {});
+                                    },
+                                    child: Text(
+                                      'Çözüldü',
+                                      style: TextStyle(fontSize: 20),
                                     ),
-                                  )
-                                ],
-                              ),
+                                  ),
+                                )
+                              ],
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                          ],
-                        );
-                      },
-                    ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                        ],
+                      );
+                    },
                   ),
-                ],
-              ),
-            ],
-          )),
+                ),
+              ],
+            ),
+          ],
+        ),
+        drawer: Drawer(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [buildHeader(context), buildMenuItems(context)],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildHeader(BuildContext context) => Container(
+        color: Colors.indigo[900],
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 30,
+            ),
+            CircleAvatar(
+              backgroundImage: AssetImage('assets/m.jpg'),
+              radius: 80,
+            ),
+            SizedBox(
+              height: 20,
+            )
+          ],
+        ),
+      );
+
+  Widget buildMenuItems(BuildContext context) => Column(
+        children: [
+          ListTile(
+            leading: Icon(Icons.home_outlined),
+            title: Text('Anasayfa'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => AdminMenu()));
+            },
+          ),
+          buildDivider(),
+          ListTile(
+            leading: const Icon(Icons.pending_actions),
+            title: const Text('Test Sonuçları'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SonucClass()));
+            },
+          ),
+          buildDivider(),
+          ListTile(
+            leading: const Icon(Icons.celebration),
+            title: const Text('Etkinlikler'),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Etkinlik()));
+            },
+          ),
+          buildDivider(),
+          ListTile(
+            leading: const Icon(Icons.exit_to_app),
+            title: const Text('Çıkış'),
+            onTap: () {
+              Navigator.of(context).popUntil((route) => route.isFirst);
+            },
+          ),
+          buildDivider(),
+        ],
+      );
+
+  Divider buildDivider() {
+    return Divider(
+      height: 10,
+      thickness: 1,
     );
   }
 }
