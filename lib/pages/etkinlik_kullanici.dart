@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:healthproject/global.dart' as global;
-import 'package:healthproject/widgets/background_image.dart';
 
 class etkKullanici extends StatefulWidget {
   const etkKullanici({super.key});

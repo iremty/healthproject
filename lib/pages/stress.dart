@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:healthproject/colors.dart';
 import 'package:healthproject/global.dart' as global;
 import 'package:healthproject/pages/stress_nefes.dart';
 import 'package:healthproject/pages/stress_yoga.dart';
 import '../widgets/background_image.dart';
 import "dart:async";
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class Stress extends StatefulWidget {
   const Stress({super.key});
@@ -119,6 +119,7 @@ class _StressState extends State<Stress> {
   }
 }
 
+
 class UykuScreen extends StatefulWidget {
   @override
   _UykuScreenState createState() => _UykuScreenState();
@@ -137,15 +138,47 @@ class _UykuScreenState extends State<UykuScreen> {
   int saniye = 0;
   bool uykuTamamlandi = false;
 
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+  FlutterLocalNotificationsPlugin();
+
   @override
   void initState() {
     super.initState();
+    initNotifications();
   }
 
   @override
   void dispose() {
     timer?.cancel();
     super.dispose();
+  }
+
+  Future<void> initNotifications() async {
+    const AndroidInitializationSettings initializationSettingsAndroid =
+    AndroidInitializationSettings('@mipmap/ic_launcher');
+    final InitializationSettings initializationSettings =
+    InitializationSettings(android: initializationSettingsAndroid);
+    await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  }
+
+  Future<void> showNotification(String title, String body) async {
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+    AndroidNotificationDetails(
+      'your_channel_id',
+      'your_channel_name',
+      'your_channel_description',
+      importance: Importance.max,
+      priority: Priority.high,
+    );
+    const NotificationDetails platformChannelSpecifics =
+    NotificationDetails(android: androidPlatformChannelSpecifics);
+    await flutterLocalNotificationsPlugin.show(
+      0,
+      title,
+      body,
+      platformChannelSpecifics,
+      payload: 'item x',
+    );
   }
 
   void startTimer() {
@@ -158,6 +191,9 @@ class _UykuScreenState extends State<UykuScreen> {
           if (dakika == 60) {
             dakika = 0;
             saat++;
+            if (saat == 24) {
+              saat = 0;
+            }
           }
         }
       });
@@ -169,7 +205,7 @@ class _UykuScreenState extends State<UykuScreen> {
     setState(() {
       uykuBitis = DateTime.now().hour;
       uykuBitisSaati =
-          "${DateTime.now().hour.toString().padLeft(2, '0')}:${DateTime.now().minute.toString().padLeft(2, '0')}";
+      "${DateTime.now().hour.toString().padLeft(2, '0')}:${DateTime.now().minute.toString().padLeft(2, '0')}";
 
       int toplamUykuDakikalari = (uykuBitis - uykuBaslangic) * 60;
       int toplamUykuSaniyeleri =
@@ -178,14 +214,19 @@ class _UykuScreenState extends State<UykuScreen> {
 
       uykuTamamlandi = true;
     });
+    showNotification('Günaydın!', 'Uykunuz tamamlandı. Hoş geldiniz!');
   }
 
   @override
   Widget build(BuildContext context) {
-    int toplamUykuDakikalari = (uykuBitis - uykuBaslangic) * 60;
+    int toplamUykuDakikalari = (uykuBitis - uykuBaslangic) * 60 + dakika;
     int toplamUykuSaniyeleri =
         ((uykuBitis - uykuBaslangic) * 3600) + (dakika * 60) + saniye;
-    int toplamUykuSaatleri = toplamUykuSaniyeleri ~/ 3600;
+    int toplamUykuSaatleri =
+        ((uykuBitis - uykuBaslangic) * 3600 + dakika * 60 + saniye) ~/ 3600;
+
+    int kalanSaniye = toplamUykuSaniyeleri % 60;
+    int kalanDakika = toplamUykuDakikalari % 60;
 
     return Stack(
       children: [
@@ -228,7 +269,8 @@ class _UykuScreenState extends State<UykuScreen> {
                         children: [
                           Text(
                             "        ${saat.toString().padLeft(2, '0')}:${dakika.toString().padLeft(2, '0')}:${saniye.toString().padLeft(2, '0')}",
-                            style: TextStyle(color: Colors.white, fontSize: 36),
+                            style:
+                            TextStyle(color: Colors.white, fontSize: 36),
                           ),
                           SizedBox(height: 10),
                           if (uykuTamamlandi)
@@ -240,7 +282,7 @@ class _UykuScreenState extends State<UykuScreen> {
                                       color: Colors.white, fontSize: 18),
                                 ),
                                 Text(
-                                  "                   $toplamUykuSaatleri Saat $toplamUykuDakikalari Dakika $toplamUykuSaniyeleri Saniye ",
+                                  "                   ${toplamUykuSaatleri % 24} Saat ${kalanDakika} Dakika $kalanSaniye Saniye ",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 18),
                                 ),
@@ -267,28 +309,32 @@ class _UykuScreenState extends State<UykuScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       ElevatedButton(
-                        style: ElevatedButton.styleFrom(minimumSize: Size(100, 40),
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: Size(100, 40),
                             backgroundColor: Colors.white),
                         onPressed: () {
                           setState(() {
                             uykuBaslangic = DateTime.now().hour;
                             uykuBaslangicSaati =
-                                "${DateTime.now().hour.toString().padLeft(2, '0')}:${DateTime.now().minute.toString().padLeft(2, '0')}";
+                            "${DateTime.now().hour.toString().padLeft(2, '0')}:${DateTime.now().minute.toString().padLeft(2, '0')}";
                             dakika = 0;
                             saat = 0;
                             saniye = 0;
                             uykuTamamlandi = false;
                           });
+                          showNotification('İyi geceler!', 'Uykunuz başladı. İyi uykular!');
                           startTimer();
                         },
                         child: Text(
                           "Uyku Başladı",
                           style: TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.bold),
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                       ElevatedButton(
-                        style: ElevatedButton.styleFrom(minimumSize: Size(100, 40),
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: Size(100, 40),
                             backgroundColor: Colors.white),
                         onPressed: () {
                           setState(() {
@@ -298,13 +344,13 @@ class _UykuScreenState extends State<UykuScreen> {
                         child: Text(
                           "Uyandı",
                           style: TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.bold),
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ],
                   ),
                 ),
-
               ],
             ),
           ),

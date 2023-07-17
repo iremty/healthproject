@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +6,6 @@ import 'package:healthproject/admin_pages/test_sonuc.dart';
 import 'package:healthproject/global.dart' as global;
 import 'package:healthproject/widgets/background_image.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../colors.dart';
 import 'admin_page.dart';
 
@@ -26,123 +24,161 @@ class _EtkinlikState extends State<Etkinlik> {
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
-      BackGroundImage1(),
       Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          backgroundColor: Colors.indigo[900],
+          backgroundColor: Colors.blue[900],
           title: const Text("Etkinlik Ekle"),
-          centerTitle: true,
         ),
         body: Container(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: Color(0xffb1a237b), width: 5)),
-              child: Column(
+          child: Column(
+            children: [
+              Container(
+                width: 450,
+                color: Colors.white,
+                height: 190,
+                child: Container(
+                  padding: EdgeInsets.only(right: 15, left: 15, top: 15),
+                  child: Column(
+                    children: [
+                      Text(
+                        " Etkinlik Ekleme Adımları \n",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "1-Etkinlik eklemek için Galeri veya Fotoğraf Çek seçeneğinden bir fotoğraf seçin,\n"
+                        "\n"
+                        "2-Etkinlik adı ve Açıklama kısmını doldurup, Ekle butonuna basın.",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 8),
+              Divider(thickness: 1, height: 1,),
+              SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
+                child: Container(
+                  margin: EdgeInsets.only(right: 10, left: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300]?.withOpacity(0.9),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: TextFormField(
+                      maxLines: null,
+                      onChanged: (val) {
+                        setState(() {
+                          etkAdi = val;
+                        });
+                      },
+                      decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(vertical: 20),
+                          border: InputBorder.none,
+                          hintStyle: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20),
+                          hintText: 'Etkinlik Adı'),
+                      style: TextStyle(color: Colors.black, fontSize: 24),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
+                child: Container(
+                  margin: EdgeInsets.only(right: 10, left: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300]?.withOpacity(0.9),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: TextFormField(
+                      maxLines: null,
+                      onChanged: (val) {
+                        setState(() {
+                          aciklama = val;
+                        });
+                      },
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(vertical: 20),
+                        border: InputBorder.none,
+                        hintStyle: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                        hintText: 'Açıklama',
+                      ),
+                      style: TextStyle(color: Colors.black, fontSize: 20),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 5.0, horizontal: 5.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.indigo[900]?.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 12.0),
-                        child: TextFormField(
-                          maxLines: null,
-                          onChanged: (val) {
-                            setState(() {
-                              etkAdi = val;
-                            });
-                          },
-                          decoration: InputDecoration(
-                              contentPadding:
-                              EdgeInsets.symmetric(vertical: 20),
-                              border: InputBorder.none,
-                              hintStyle: kBodyText,
-                              hintText: 'Etkinlik Adı'),
-                          style: TextStyle(color: Colors.white, fontSize: 24),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 5.0, horizontal: 5.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.indigo[900]?.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 12.0),
-                        child: TextFormField(
-                          maxLines: null,
-                          onChanged: (val) {
-                            setState(() {
-                              aciklama = val;
-                            });
-                          },
-                          decoration: InputDecoration(
-                              contentPadding:
-                              EdgeInsets.symmetric(vertical: 20),
-                              border: InputBorder.none,
-                              hintStyle: kBodyText,
-                              hintText: 'Açıklama'),
-                          style: TextStyle(color: Colors.white, fontSize: 24),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
                   ElevatedButton(
+                    style:ElevatedButton.styleFrom(backgroundColor: Colors.blue[800]) ,
                       onPressed: galeriden_yukleme,
                       child: Text(
                         'Galeriden Seç',
-                        style: TextStyle(color: Colors.black, fontSize: 20),
+                        style: TextStyle(color: Colors.white, fontSize: 20),
                       )),
+
                   ElevatedButton(
-                      onPressed: kameradan_yukleme,
+                    style: ButtonStyle(backgroundColor:MaterialStateProperty.all(Colors.blue[800])),
+                        onPressed: kameradan_yukleme,
                       child: Text(
                         'Fotoğraf Çek',
-                        style: TextStyle(color: Colors.black, fontSize: 20),
+                        style: TextStyle(color: Colors.white, fontSize: 20),
                       )),
-                  _secilenResim == null
-                      ? Text(
-                    "Resim yok",
-                    style: TextStyle(fontSize: 40),
-                  )
-                      : Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image.file(File(_secilenResim!.path)),
-                    ),
-                  ),
-                  ElevatedButton(
-                      onPressed: sisteme_yukleme,
-                      child: Text(
-                        'Ekle',
-                        style: TextStyle(color: Colors.black, fontSize: 20),
-                      )),
+
                 ],
               ),
-            ),
+              _secilenResim == null
+                  ? Text(
+                "Seçili Resim Yok",
+                style: TextStyle(fontSize: 35),
+              )
+                  : Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.file(File(_secilenResim!.path)),
+                ),
+              ),
+
+              ElevatedButton(
+                  style: ButtonStyle(backgroundColor:MaterialStateProperty.all(Colors.blue[800])),
+                  onPressed: sisteme_yukleme,
+                  child: Text(
+                    'Ekle',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  )),
+            ],
           ),
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         drawer: Drawer(
           child: SingleChildScrollView(
             child: Column(
@@ -204,63 +240,63 @@ class _EtkinlikState extends State<Etkinlik> {
   }
 
   Widget buildHeader(BuildContext context) => Container(
-    color: Colors.indigo[900],
-    padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-    child: Column(
-      children: [
-        SizedBox(
-          height: 30,
+        color: Colors.indigo[900],
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 30,
+            ),
+            CircleAvatar(
+              backgroundImage: AssetImage('assets/m.jpg'),
+              radius: 80,
+            ),
+            SizedBox(
+              height: 20,
+            )
+          ],
         ),
-        CircleAvatar(
-          backgroundImage: AssetImage('assets/m.jpg'),
-          radius: 80,
-        ),
-        SizedBox(
-          height: 20,
-        )
-      ],
-    ),
-  );
+      );
 
   Widget buildMenuItems(BuildContext context) => Column(
-    children: [
-      ListTile(
-        leading: Icon(Icons.home_outlined),
-        title: Text('Anasayfa'),
-        onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => AdminMenu()));
-        },
-      ),
-      buildDivider(),
-      ListTile(
-        leading: const Icon(Icons.pending_actions),
-        title: const Text('Test Sonuçları'),
-        onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => SonucClass()));
-        },
-      ),
-      buildDivider(),
-      ListTile(
-        leading: const Icon(Icons.celebration),
-        title: const Text('Etkinlikler'),
-        onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => Etkinlik()));
-        },
-      ),
-      buildDivider(),
-      ListTile(
-        leading: const Icon(Icons.exit_to_app),
-        title: const Text('Çıkış'),
-        onTap: () {
-          Navigator.of(context).popUntil((route) => route.isFirst);
-        },
-      ),
-      buildDivider(),
-    ],
-  );
+        children: [
+          ListTile(
+            leading: Icon(Icons.home_outlined),
+            title: Text('Anasayfa'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => AdminMenu()));
+            },
+          ),
+          buildDivider(),
+          ListTile(
+            leading: const Icon(Icons.pending_actions),
+            title: const Text('Anket Sonuçları'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SonucClass()));
+            },
+          ),
+          buildDivider(),
+          ListTile(
+            leading: const Icon(Icons.celebration),
+            title: const Text('Etkinlikler'),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Etkinlik()));
+            },
+          ),
+          buildDivider(),
+          ListTile(
+            leading: const Icon(Icons.exit_to_app),
+            title: const Text('Çıkış'),
+            onTap: () {
+              Navigator.of(context).popUntil((route) => route.isFirst);
+            },
+          ),
+          buildDivider(),
+        ],
+      );
 
   Divider buildDivider() {
     return Divider(

@@ -79,8 +79,8 @@ class _SonucClassState extends State<SonucClass> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Test Sonuçları'),
-          backgroundColor: Colors.indigo[900],
+          title: Text('Anket Sonuçları'),
+          backgroundColor: Colors.blue[900],
         ),
         body: Stack(children: [
           Column(
@@ -96,7 +96,7 @@ class _SonucClassState extends State<SonucClass> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         border: Border.all(
-                          color: Colors.indigo.shade900,
+                          color: Colors.blue[900]!,
                           width: 3.0,
                         )),
                     child: Padding(
@@ -109,7 +109,7 @@ class _SonucClassState extends State<SonucClass> {
                             child: Text(
                               'Soru',
                               style: TextStyle(
-                                  fontSize: 30, color: Colors.indigo.shade900),
+                                  fontSize: 30, color: Colors.blue[900]),
                             ),
                           ),
                           Padding(
@@ -117,7 +117,7 @@ class _SonucClassState extends State<SonucClass> {
                             child: Text(
                               'Puan',
                               style: TextStyle(
-                                  fontSize: 30, color: Colors.indigo.shade900),
+                                  fontSize: 30, color: Colors.blue[900]),
                             ),
                           )
                         ],
@@ -137,7 +137,7 @@ class _SonucClassState extends State<SonucClass> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
                               color: index % 2 == 0
-                                  ? Colors.indigo[400]
+                                  ? Colors.blue[900]
                                   : Colors.indigo[100],
                             ),
                             child: Column(
@@ -234,7 +234,7 @@ class _SonucClassState extends State<SonucClass> {
           buildDivider(),
           ListTile(
             leading: const Icon(Icons.pending_actions),
-            title: const Text('Test Sonuçları'),
+            title: const Text('Anket Sonuçları'),
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => SonucClass()));

@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:healthproject/admin_pages/test_sonuc.dart';
 import 'package:healthproject/widgets/background_image.dart';
-
 import 'admin_page.dart';
 import 'etkinlik.dart';
 
@@ -52,13 +51,12 @@ class _HastalikState extends State<Hastalik> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.indigo[900],
+          backgroundColor: Colors.blue[900],
+          elevation: 0,
           title: const Text("Kronik Hastalıklar"),
-
         ),
         body: Stack(
           children: [
-            BackGroundImage1(),
             Column(
               children: [
                 SizedBox(
@@ -73,9 +71,9 @@ class _HastalikState extends State<Hastalik> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(
-                                    color: Color(0xffb1a237b), width: 5)),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
                             child: Column(
                               children: [
                                 SizedBox(
@@ -89,7 +87,7 @@ class _HastalikState extends State<Hastalik> {
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(5),
-                                          color: Colors.white,
+                                          color: Colors.grey[300],
                                         ),
                                         child: Column(
                                           mainAxisAlignment:
@@ -128,7 +126,7 @@ class _HastalikState extends State<Hastalik> {
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(5),
-                                          color: Colors.white,
+                                          color: Colors.grey[300],
                                         ),
                                         child: Column(
                                           mainAxisAlignment:
@@ -164,10 +162,11 @@ class _HastalikState extends State<Hastalik> {
                                         height: 10,
                                       ),
                                       Container(
+                                        height: 90,
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(5),
-                                          color: Colors.white,
+                                          color: Colors.grey[300],
                                         ),
                                         child: Column(
                                           mainAxisAlignment:
@@ -181,8 +180,10 @@ class _HastalikState extends State<Hastalik> {
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsets.all(
-                                                            10.0),
+                                                        const EdgeInsets.only(
+                                                            right: 70,
+                                                            bottom: 20,
+                                                            left: 10),
                                                     child: Text(
                                                       'Çözüm Önerisi:  ${istek[index]}',
                                                       style: TextStyle(
@@ -237,6 +238,7 @@ class _HastalikState extends State<Hastalik> {
             ),
           ],
         ),
+        backgroundColor: Colors.blue[900],
         drawer: Drawer(
           child: SingleChildScrollView(
             child: Column(
@@ -281,7 +283,7 @@ class _HastalikState extends State<Hastalik> {
           buildDivider(),
           ListTile(
             leading: const Icon(Icons.pending_actions),
-            title: const Text('Test Sonuçları'),
+            title: const Text('Anket Sonuçları'),
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => SonucClass()));

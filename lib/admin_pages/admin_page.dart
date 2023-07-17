@@ -15,7 +15,7 @@ class AdminMenu extends StatefulWidget {
 
 class _AdminMenuState extends State<AdminMenu> {
   List<Widget> items = [
-    Image.asset('assets/login.jpeg'),
+    Image.asset('assets/tans.png'),
     Image.asset('assets/alerji.jpg'),
     Image.asset('assets/astm.png'),
   ];
@@ -24,61 +24,37 @@ class _AdminMenuState extends State<AdminMenu> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        BackGroundImage1(),
         Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.blue[900],
-            title: Text(
-              'MediConn',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold),
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(55),
+            child: AppBar(
+              iconTheme: IconThemeData(color: Colors.blue[900]),
+              backgroundColor: Colors.white,
+              title: Text(
+                'MediConn',
+                style: TextStyle(
+                    color: Colors.blue[900],
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold),
+              ),
+              centerTitle: true,
             ),
-            centerTitle: true,
           ),
           body: Center(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 15,
-                ),
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20),
+            child: Container(
+              child: Stack(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(top: 300),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.white),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CarouselSlider(
-                            items: items,
-                            options: CarouselOptions(
-                              aspectRatio: 16 / 9,
-                              viewportFraction: 0.8,
-                              initialPage: 0,
-                              enableInfiniteScroll: true,
-                              reverse: false,
-                              autoPlay: true,
-                              autoPlayInterval: Duration(seconds: 3),
-                              autoPlayAnimationDuration:
-                                  Duration(milliseconds: 800),
-                              autoPlayCurve: Curves.fastOutSlowIn,
-                              enlargeCenterPage: true,
-                              enlargeFactor: 0.3,
-                              scrollDirection: Axis.horizontal,
-                            )),
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(50),
+                        ),
+                        color: Colors.blue[900]),
                     child: Column(
                       children: [
                         SizedBox(
-                          height: 40,
+                          height: 50,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -89,10 +65,11 @@ class _AdminMenuState extends State<AdminMenu> {
                                   style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(20)),
+                                              BorderRadius.circular(10)),
                                       backgroundColor: Colors.white,
                                       side: BorderSide(
-                                          color: Colors.white, width: 2.0)),
+                                          color: Color(0xffbf9f9f9),
+                                          width: 2.0)),
                                   onPressed: () {
                                     Navigator.push(
                                         context,
@@ -100,14 +77,14 @@ class _AdminMenuState extends State<AdminMenu> {
                                             builder: (context) =>
                                                 SonucClass()));
                                   },
-                                  child: Icon(
-                                    Icons.pending_actions,
-                                    size: 70,
-                                    color: Colors.blue[900],
+                                  child: Image.asset(
+                                    "assets/25.png",
+                                    width: 75,
+                                    height: 75,
                                   ),
                                 ),
                                 Text(
-                                  'Test Sonuçları\n',
+                                  '     Anket \n Sonuçları',
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 20),
                                 )
@@ -119,24 +96,22 @@ class _AdminMenuState extends State<AdminMenu> {
                                   style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(20),
-                                          side: BorderSide(
-                                              color: Colors.white, width: 2.0)),
-                                      backgroundColor: Colors.white),
+                                              BorderRadius.circular(10)),
+                                      backgroundColor: Color(0xffbf8f8f8)),
                                   onPressed: () {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => Hastalik()));
                                   },
-                                  child: Icon(
-                                    Icons.vaccines,
-                                    size: 70,
-                                    color: Colors.blue[900],
+                                  child: Image.asset(
+                                    "assets/65.png",
+                                    width: 75,
+                                    height: 75,
                                   ),
                                 ),
                                 Text(
-                                  'Kronik\nHastalıklar',
+                                  '   Hastalıklar\n',
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 20),
                                 )
@@ -147,25 +122,23 @@ class _AdminMenuState extends State<AdminMenu> {
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20),
+                                        borderRadius: BorderRadius.circular(10),
                                       ),
-                                      backgroundColor: Colors.white,
-                                      side: BorderSide(
-                                          color: Colors.white, width: 2.0)),
+                                      backgroundColor: Color(0xffbececec)),
                                   onPressed: () {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => Etkinlik()));
                                   },
-                                  child: Icon(
-                                    Icons.celebration,
-                                    size: 70,
-                                    color: Colors.blue[900],
+                                  child: Image.asset(
+                                    "assets/75.png",
+                                    width: 75,
+                                    height: 75,
                                   ),
                                 ),
                                 Text(
-                                  'Egzersiz\n',
+                                  'Etkinlikler\n',
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 20),
                                 )
@@ -173,17 +146,52 @@ class _AdminMenuState extends State<AdminMenu> {
                             ),
                           ],
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
                       ],
                     ),
                   ),
-                ),
-              ],
+                  Stack(
+                    children: [
+                      Container(
+                        height: 300,
+                        color: Colors.blue[900],
+                      ),
+                      Container(
+                        height: 300,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(40),
+                            ),
+                            color: Colors.white),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CarouselSlider(
+                                items: items,
+                                options: CarouselOptions(
+                                  aspectRatio: 16 / 9,
+                                  viewportFraction: 0.8,
+                                  initialPage: 0,
+                                  enableInfiniteScroll: true,
+                                  reverse: false,
+                                  autoPlay: true,
+                                  autoPlayInterval: Duration(seconds: 7),
+                                  autoPlayAnimationDuration:
+                                      Duration(seconds: 2),
+                                  autoPlayCurve: Curves.fastOutSlowIn,
+                                  enlargeCenterPage: true,
+                                  enlargeFactor: 0.3,
+                                  scrollDirection: Axis.horizontal,
+                                )),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.white,
           drawer: Drawer(
             child: SingleChildScrollView(
               child: Column(
@@ -229,10 +237,19 @@ class _AdminMenuState extends State<AdminMenu> {
           buildDivider(),
           ListTile(
             leading: const Icon(Icons.pending_actions),
-            title: const Text('Test Sonuçları'),
+            title: const Text('Anket Sonuçları'),
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => SonucClass()));
+            },
+          ),
+          buildDivider(),
+          ListTile(
+            leading: const Icon(Icons.monitor_heart),
+            title: const Text('Hastalıklar'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Hastalik()));
             },
           ),
           buildDivider(),

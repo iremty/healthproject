@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -52,11 +50,9 @@ class _MedicineState extends State<Medicine> {
     if (payload != null) {
       debugPrint('notification payload: $payload');
     }
-    // Bildirime tıklandığında ne yapılacağını belirtmek için bir işlev yazabilirsiniz.
   }
 
   Future<void> addMedicine() async {
-    // İlaç eklemek için veritabanına kaydetme işlemini gerçekleştirin
     DocumentReference docRef = await medicineCollection.add({
       'name': _medicineName,
       'dose': _medicineDose,
@@ -64,7 +60,6 @@ class _MedicineState extends State<Medicine> {
       'kullaniciAdi': global.kullaniciAdi,
     });
 
-    // Bildirimi zamanlayın
     if (_selectedTime != null) {
       var time = Time(_selectedTime!.hour, _selectedTime!.minute);
       var now = DateTime.now();
@@ -301,22 +296,29 @@ class _MedicineState extends State<Medicine> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: Text('İlaç Sil',style: TextStyle(fontWeight: FontWeight.bold)),
+                          title: Text('İlaç Sil',
+                              style: TextStyle(fontWeight: FontWeight.bold)),
                           content: Text(
-                              'Bu ilacı silmek istediğinizden emin misiniz?',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18)),
+                              'Bu ilacı silmek istediğinizden emin misiniz?',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500, fontSize: 18)),
                           actions: [
                             TextButton(
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
-                              child: Text('İptal',style: TextStyle(fontWeight: FontWeight.bold)),
+                              child: Text('İptal',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
                             ),
                             TextButton(
                               onPressed: () {
                                 deleteMedicine(medicineId);
                                 Navigator.of(context).pop();
                               },
-                              child: Text('Sil',style: TextStyle(fontWeight: FontWeight.bold)),
+                              child: Text('Sil',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
                             ),
                           ],
                         );
@@ -353,7 +355,6 @@ class _MedicineState extends State<Medicine> {
             backgroundColor: Colors.blue[900],
             title: Text('İlaç Takibi',
                 style: TextStyle(color: Colors.white, fontSize: 25)),
-
             elevation: 0,
           ),
           body: Stack(
@@ -384,7 +385,8 @@ class _MedicineState extends State<Medicine> {
                     );
                   },
                   child: Icon(
-                    Icons.add,color: Colors.red,
+                    Icons.add,
+                    color: Colors.red,
                   ),
                 ),
               ),

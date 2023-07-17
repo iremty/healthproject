@@ -71,7 +71,7 @@ class _FirstPageState extends State<FirstPage> {
                                   style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(10)),
+                                          BorderRadius.circular(10)),
                                       backgroundColor: Colors.white,
                                       side: BorderSide(
                                           color: Color(0xffbf9f9f9),
@@ -164,7 +164,7 @@ class _FirstPageState extends State<FirstPage> {
                                   style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(10)),
+                                          BorderRadius.circular(10)),
                                       backgroundColor: Color(0xffbf8f8f8)),
                                   onPressed: () {
                                     Navigator.push(
@@ -191,7 +191,7 @@ class _FirstPageState extends State<FirstPage> {
                                   style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(10)),
+                                          BorderRadius.circular(10)),
                                       backgroundColor: Color(0xffbefefef)),
                                   onPressed: () {
                                     Navigator.push(
