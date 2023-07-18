@@ -53,7 +53,7 @@ class _HastalikState extends State<Hastalik> {
         appBar: AppBar(
           backgroundColor: Colors.blue[900],
           elevation: 0,
-          title: const Text("Kronik Hastalıklar"),
+          title: const Text(" Hastalıklar"),
         ),
         body: Stack(
           children: [
@@ -162,7 +162,7 @@ class _HastalikState extends State<Hastalik> {
                                         height: 10,
                                       ),
                                       Container(
-                                        height: 90,
+                                        height: 130,
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(5),
@@ -182,7 +182,7 @@ class _HastalikState extends State<Hastalik> {
                                                     padding:
                                                         const EdgeInsets.only(
                                                             right: 70,
-                                                            bottom: 20,
+                                                            bottom: 30,
                                                             left: 10),
                                                     child: Text(
                                                       'Çözüm Önerisi:  ${istek[index]}',

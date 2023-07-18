@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:healthproject/widgets/background_image.dart';
 
 class ExercisePlanPage extends StatelessWidget {
   final String title;
   final List<String> plans;
   final List<String> imagePaths;
+  final List<String> planTitles;
 
   ExercisePlanPage({
     required this.title,
     required this.plans,
     required this.imagePaths,
+    required this.planTitles,
   });
 
   @override
@@ -18,9 +19,10 @@ class ExercisePlanPage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.blue[900],
           title: Text(title),
+          elevation: 0,
         ),
+        backgroundColor: Colors.blue[900],
         body: Stack(children: [
-          BackGroundImage1(),
           PageView.builder(
             itemCount: plans.length,
             itemBuilder: (context, index) {
@@ -44,18 +46,17 @@ class ExercisePlanPage extends StatelessWidget {
                     ),
                     SizedBox(height: 20.0),
                     Text(
-                      'EGZERSİZ PLANI - ${index + 1}',
-                      semanticsLabel: plans[index],
+                      planTitles[index],
                       style: TextStyle(
-                          fontSize: 24.0,
+                          fontSize: 28.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.deepOrange),
+                          color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 10.0),
                     Divider(
-                      color: Colors.blueGrey.withOpacity(1),
-                      thickness: 3,
+                      color: Colors.white.withOpacity(1),
+                      thickness: 0.5,
                       height: 50,
                     ),
                     Text(
@@ -64,7 +65,7 @@ class ExercisePlanPage extends StatelessWidget {
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
-                      textAlign: TextAlign.start,
+                      textAlign: TextAlign.center,
                     ),
                   ],
                 ),

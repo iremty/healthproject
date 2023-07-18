@@ -23,7 +23,7 @@ class _KronikState extends State<Kronik> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: Colors.indigo[900],
+        backgroundColor: Colors.blue[900],
         title: const Text("Hastalıklarınız"),
       ),
       body: Stack(
@@ -35,7 +35,7 @@ class _KronikState extends State<Kronik> {
               children: [
                 SizedBox(height: 78),
                 Text(
-                  "Hastalıklarınız nelerdir?",
+                  "Problemleriniz nelerdir?",
                   style: TextStyle(
                     //backgroundColor: Colors.blue[100]?.withOpacity(0.5),
                     fontWeight: FontWeight.bold,

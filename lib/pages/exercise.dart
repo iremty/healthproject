@@ -36,23 +36,40 @@ class ExerciseHomePage extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>
-                    ExercisePlanPage(title: '18 - 25 Yaş Aralığı', plans: [
-                      'Sabahları 30 dakika koşu yapın. \nÖğleden sonra yoga veya pilates yapın. \nAkşamları spor salonuna gidip kardiyo ve ağırlık antrenmanları yapın.',
-                      'Pazartesi: 1 saat voleybol, 15 dakika esneme\nSalı: 30 dakika koşu, 20 dakika ağırlık antrenmanı\nÇarşamba: 45 dakika pilates, 15 dakika esneme\nPerşembe: 30 dakika yüzme, 20 dakika yoga\nCuma: 45 dakika dans, 15 dakika esneme\nCumartesi: Dinlenme\nPazar: 1 saat futbol, 15 dakika esneme',
-                      'Pazartesi: 30 dakika bisiklet sürme, 20 dakika ağırlık antrenmanı\nSalı: 1 saat dans, 15 dakika esneme\nÇarşamba: 45 dakika koşu, 15 dakika esneme\nPerşembe: 45 dakika yoga, 20 dakika pilates\nCuma: 30 dakika interval antrenmanı, 15 dakika esneme\nCumartesi: Dinlenme\nPazar: 1 saat basketbol, 15 dakika esneme',
-                    ], imagePaths: [
-                      'assets/plan_image_0.png',
-                      'assets/plan_image_1.png',
-                      'assets/plan_image_2.png'
-                    ]),
+                builder: (context) => ExercisePlanPage(
+                  title: '18 - 25 Yaş Aralığı',
+                  plans: [
+                    'Ellerinizi omuz genişliğinde yerleştirin ve ayaklarınızı birbirinden ayrı tutun.\nVücudunuzu düz bir çizgi halinde tutarak yavaşça göğsünüzü yere doğru indirin ve sonra başlangıç pozisyonuna geri yükselin.\nBaşlangıçta dizlerinizi yere koyarak veya duvara dayanarak yapabilirsiniz, daha sonra zorluk seviyesini artırabilirsiniz.',
+                    'Ayaklarınız omuz genişliğinde açık olmalı, ellerinizi göğsünüzde tutabilir veya düz tutabilirsiniz.\nKalçanızı geriye doğru çekerek ve dizlerinizi hafifçe bükerek çömelin.\nDizlerinizin ayak parmaklarınızın ötesine uzanmasına dikkat edin ve başlangıç pozisyonuna geri dönün.',
+                    'Sırt üstü yere uzanın, dizleriniz bükülü olsun ve ellerinizi başınızın arkasına yerleştirin.\nKarın kaslarınızı kullanarak omuzlarınızı yere doğru kaldırın ve tekrar yavaşça yere indirin.',
+                    'Bir sandalyeye, koltuk kenarına veya evdeki başka bir yükseltilmiş yüzeye sırtınızı dönün.\nEllerinizi vücudunuzun yanlarında yerleştirin ve kollarınızı bükmeden aşağı doğru inin, sonra kollarınızı düzleştirin.',
+                    'Ön kollarınız ve ayak parmaklarınız üzerinde düz bir çizgi oluşturacak şekilde yere uzanın.\nKarın kaslarınızı sıkın ve vücudunuzu düz bir çizgide tutun, sırtınızı veya kalçanızı düşürmeyin.',
+                    'Her egzersizden sonra 1-2 dakikalık dinlenme süresi vermek uygun olacaktır.\n\nHer egzersiz için 3 set ve 10-12 tekrar hedefleyebilirsiniz. Eğer tekrar sayıları sizin için çok kolaysa, ağırlığı artırarak zorluk seviyesini yükseltebilirsiniz.\n\nBir sağlık uzmanına danışmak her zaman önemlidir.'
+                  ],
+                  imagePaths: [
+                    'assets/plany1.jpg',
+                    'assets/plany2.jpg',
+                    'assets/plany3.jpg',
+                    'assets/plany4.jpg',
+                    'assets/plany5.jpg',
+                    'assets/careful.jpg'
+                  ],
+                  planTitles: [
+                    'Push-up \n(Şınav)',
+                    'Squat \n(Çömelme)',
+                    'Crunches \n(Mekik)',
+                    'Dips \n(Triceps Dips)',
+                    'Plank',
+                    'Öneri'
+                  ],
+                ),
               ),
             );
           },
           child: ExerciseCard(
             imagePath: 'assets/youngexercise.png',
-            title: '   18 - 25 Yaş Aralığı',
-            description: '\n      Egzersiz Planları',
+            title: '18 - 25 Yaş Aralığı',
+            description: '\n     Egzersiz Planları',
           ),
         ),
         SizedBox(height: 16.0),
@@ -64,14 +81,28 @@ class ExerciseHomePage extends StatelessWidget {
                 builder: (context) => ExercisePlanPage(
                   title: '25 - 35 Yaş Aralığı',
                   plans: [
-                    'Haftada 3 kez 45 dakikalık yürüyüş yapın.\nHer gün 15 dakika esneme egzersizleri yapın.\nPazartesi, Çarşamba ve Cuma günleri kardiyo antrenmanları yapın.\nSalı ve Perşembe günleri direnç egzersizleri yapın.',
-                    'Pazartesi: 1 saat voleybol, 15 dakika esneme\nSalı: 45 dakika koşu, 20 dakika ağırlık antrenmanı\nÇarşamba: 30 dakika yürüyüş, 15 dakika esneme\nPerşembe: 45 dakika pilates, 20 dakika yoga\nCuma: 30 dakika interval antrenmanı, 15 dakika esneme\nCumartesi: Dinlenme\nPazar: 1 saat basketbol, 15 dakika esneme',
-                    'Pazartesi: 45 dakika yoga, 20 dakika ağırlık antrenmanı\nSalı: 30 dakika koşu, 15 dakika esneme\nÇarşamba: 1 saat dans, 15 dakika esneme\Perşembe: 45 dakika yürüyüş, 20 dakika pilates\nCuma: 30 dakika bisiklet sürme, 15 dakika esneme\nCumartesi: Dinlenme\nPazar: 1 saat futbol, 15 dakika esneme',
+                    'Sırt üstü yere uzanın ve dambıl veya ağırlık şişesini her elinizde tutun.\nDizleriniz bükülü olsun ve ayaklarınız yere sağlam basın.\nDambılları yavaşça indirin ve tekrar yukarı doğru kaldırın. Göğsünüzü tam olarak indirecek kadar bükülme yapın ve omuzlarınızı yerden kaldırmayın.',
+                    'Ayaklarınızı omuz genişliğinde açın ve bir adım atacak kadar ileriye doğru adım atın.\nÖne doğru bükülerek, ön dizinizin arkasını neredeyse yere kadar indirin ve ardından başlangıç pozisyonuna geri dönün.\nHer bacak için tekrarlayın.',
+                    'Dambılları her elinizde tutun ve belinizi hafifçe bükerek gövdenizi öne doğru eğin.\nSırtınızı düz tutun ve dambılları vücudunuza doğru çekin, dirseklerinizi geriye doğru bükün.\nDambılları kontrol ederek başlangıç pozisyonuna geri bırakın.',
+                    'Klasik plank pozisyonunda ellerinizi omuz genişliğinde yerleştirin.\nSırayla sağ elinizi sol omzunuza dokunacak şekilde kaldırın ve tekrar başlangıç pozisyonuna geri dönün. Ardından sol elinizi sağ omzunuza dokunacak şekilde kaldırın.',
+                    'Sırt üstü yere uzanın, dizleriniz bükülü ve ayaklarınız yere sağlam basın.\nKalçanızı yavaşça yukarı doğru kaldırın ve sıkın, sonra tekrar yere indirin.',
+                    'Her egzersizden sonra 1-2 dakikalık dinlenme süresi vermek uygun olacaktır\n\nBaşlangıç olarak her egzersiz için 3 set ve 10-12 tekrar hedefleyebilirsiniz. Eğer tekrar sayıları sizin için çok kolaysa, ağırlığı artırarak zorluk seviyesini yükseltebilirsiniz.\n\nBir sağlık uzmanına danışmak her zaman önemlidir.'
                   ],
                   imagePaths: [
-                    'assets/plan_image_3.png',
-                    'assets/plan_image_4.png',
-                    'assets/plan_image_5.png'
+                    'assets/planm1.jpg',
+                    'assets/planm2.jpg',
+                    'assets/planm3.jpg',
+                    'assets/planm4.jpg',
+                    'assets/planm5.jpg',
+                    'assets/careful.jpg'
+                  ],
+                  planTitles: [
+                    'Floor Press \n(Yerde Dambıl Presi)',
+                    'Lunges \n(Hamle)',
+                    'Bent-Over Dumbbell Rows \n(Eğilerek Karına Çekiş)',
+                    'Plank with Shoulder Taps \n(Omuz Vuruşlu Plank)',
+                    'Glute Bridges \n(Glute Köprüsü)',
+                    'Öneri'
                   ],
                 ),
               ),
@@ -79,8 +110,8 @@ class ExerciseHomePage extends StatelessWidget {
           },
           child: ExerciseCard(
             imagePath: 'assets/midexercise.png',
-            title: '   25 - 35 Yaş Aralığı',
-            description: '\n      Egzersiz Planları',
+            title: '25 - 35 Yaş Aralığı',
+            description: '\n     Egzersiz Planları',
           ),
         ),
         SizedBox(height: 16.0),
@@ -92,14 +123,28 @@ class ExerciseHomePage extends StatelessWidget {
                 builder: (context) => ExercisePlanPage(
                   title: '35 - 50 Yaş Aralığı',
                   plans: [
-                    'Haftada 3-4 kez 30 dakikalık tempolu yürüyüş yapın.\nYoga veya tai chi gibi esneme ve denge egzersizlerine katılın.\nPazartesi, Çarşamba ve Cuma günleri hafif kardiyo egzersizleri yapın.\nSalı ve Perşembe günleri kas güçlendirme egzersizleri yapın.',
-                    'Pazartesi: 1 saat yürüyüş, 20 dakika esneme\nSalı: 30 dakika yoga, 15 dakika denge egzersizleri\nÇarşamba: 45 dakika pilates, 15 dakika esneme\nPerşembe: 30 dakika yüzme, 20 dakika esneme\nCuma: 45 dakika hafif kardiyo, 15 dakika esneme\nCumartesi: Dinlenme\nPazar: 1 saat voleybol, 15 dakika esneme',
-                    'Pazartesi: 45 dakika yoga, 20 dakika esneme\nSalı: 1 saat yürüyüş, 15 dakika denge egzersizleri\nÇarşamba: 30 dakika pilates, 15 dakika esneme\nPerşembe: 45 dakika yüzme, 20 dakika esneme\nCuma: 30 dakika bisiklet sürme, 15 dakika esneme\nCumartesi: Dinlenme\nPazar: 45 dakika hafif kardiyo, 15 dakika esneme',
+                    'Bir sandalyenin önünde durun ve ayaklarınız omuz genişliğinde açık olsun.\nKalçanızı geriye doğru çekerek ve dizlerinizi bükerek yavaşça çömelin.\nSandalyeye hafifçe oturun ve tekrar yukarı doğru kalkın.',
+                    'Dambılları omuzlarınızın yanında kulağınıza doğru kaldırın ve ardından tekrar başlangıç pozisyonuna indirin.\nOmuzları dik tutmaya özen gösterin ve kontrollü bir şekilde çalışın.',
+                    'Sırt üstü yere uzanın, dizleriniz bükülü ve ayaklarınız yere sağlam basın.\nKalçanızı yukarı kaldırın ve sonra sağ ve sol dizinizi sırayla göğsünüze doğru çekin.',
+                    'Sandalyeye otururken yapabileceğiniz çeşitli yoga pozları vardır. Örneğin, el ve kol hareketleri, omurga esnetme, ayak bileği ve bacak hareketleri gibi birçok farklı poz yapılabilir.',
+                    'Elleriniz ve dizleriniz yerde olacak şekilde dört ayak üzerine gelin.\nSağ kolunuzu ileri doğru uzatırken aynı anda sol bacağınızı arkaya doğru uzatın.\nSırtınızı düz tutun ve kollarınızı, bacaklarınızı sıkarak çalışın. Sonra diğer tarafa geçin.',
+                    'Her egzersizden sonra 1-2 dakikalık dinlenme süresi vermek uygun olacaktır.\n\nBaşlangıç olarak her egzersiz için 3 set ve 10-12 tekrar hedefleyebilirsiniz. Eğer tekrar sayıları sizin için çok kolaysa, ağırlığı artırarak zorluk seviyesini yükseltebilirsiniz.\n\nBir sağlık uzmanına danışmak her zaman önemlidir.'
                   ],
                   imagePaths: [
-                    'assets/plan_image_6.png',
-                    'assets/plan_image_7.png',
-                    'assets/plan_image_8.png'
+                    'assets/plano1.jpg',
+                    'assets/plano2.jpg',
+                    'assets/plano3.jpg',
+                    'assets/plano4.jpg',
+                    'assets/plano5.jpg',
+                    'assets/careful.jpg'
+                  ],
+                  planTitles: [
+                    'Squat to Chair \n(Sandalyede Çömelme)',
+                    'Dumbbell Shoulder Press \n(Dambıl Omuz Presi)',
+                    'Glute Bridge March \n(Glute Köprüsü Yürüyüşü)',
+                    'Chair Yoga \n(Sandalyede Yoga)',
+                    'Bird-Dog \n(Av Köpeği Duruşu',
+                    'Öneri'
                   ],
                 ),
               ),
@@ -107,8 +152,8 @@ class ExerciseHomePage extends StatelessWidget {
           },
           child: ExerciseCard(
             imagePath: 'assets/oldexercise.png',
-            title: '   35 - 50 Yaş Aralığı',
-            description: '\n      Egzersiz Planları',
+            title: '35 - 50 Yaş Aralığı',
+            description: '\n     Egzersiz Planları',
           ),
         ),
         SizedBox(height: 16.0),
@@ -120,14 +165,28 @@ class ExerciseHomePage extends StatelessWidget {
                 builder: (context) => ExercisePlanPage(
                   title: '50 - 65 Yaş Aralığı',
                   plans: [
-                    'Haftada 4-5 kez 20 dakikalık yürüyüş yapın.\nEsneme ve esneklik egzersizlerine özel önem verin.\nPazartesi, Çarşamba ve Cuma günleri hafif kardiyo egzersizleri yapın.\nSalı ve Perşembe günleri denge ve koordinasyon egzersizleri yapın.',
-                    'Pazartesi: 45 dakika yürüyüş, 15 dakika denge egzersizleri\nSalı: 30 dakika esneme, 20 dakika hafif kardiyo\nÇarşamba: 1 saat yoga, 15 dakika esneme\nPerşembe: 30 dakika bisiklet sürme, 15 dakika denge egzersizleri\nCuma: 45 dakika hafif kardiyo, 20 dakika esneme\nCumartesi: Dinlenme\nPazar: 30 dakika yüzme, 15 dakika esneme',
-                    'Pazartesi: 30 dakika yürüyüş, 15 dakika denge egzersizleri\nSalı: 45 dakika esneme, 20 dakika hafif kardiyo\nÇarşamba: 1 saat yoga, 15 dakika esneme\nPerşembe: 30 dakika bisiklet sürme, 15 dakika denge egzersizleri\nCuma: 45 dakika hafif kardiyo, 20 dakika esneme\nCumartesi: Dinlenme\nPazar: 30 dakika yüzme, 15 dakika esneme',
+                    'Sandalyenin önünde durun ve ayaklarınız omuz genişliğinde açık olsun.\nKalçanızı geriye doğru çekerek ve dizlerinizi bükerek yavaşça çömelin.\nSandalyenin kenarına hafifçe oturun ve tekrar yukarı doğru kalkın.\nBu egzersizi güçlenene kadar bir sandalye veya tabure kullanarak yapabilirsiniz.',
+                    'Ellerinizi duvara göğsünüz hizasında ve omuz genişliğinde yerleştirin.\nAyaklarınızı bir adım geriye alın ve vücudunuzu duvardan uzaklaştıracak şekilde itin.\nDuvardan uzaklaşırken göğsünüzü duvara doğru eğin ve tekrar başlangıç pozisyonuna dönün.',
+                    'Ayaklarınızı omuz genişliğinde açın ve ellerinizi belinizde tutun.\nYavaşça yüksek diz kaldırmaya başlayın, teker teker sağ ve sol bacaklarınızı yukarı doğru kaldırın.\nBu egzersizi düşük yoğunlukta, kardiyo aktivitesi olarak yapabilirsiniz.',
+                    'Sandalyeye oturun ve sırtınızı düz tutun.\nDizlerinizi hafifçe bükün ve bacaklarınızı yavaşça yukarı doğru kaldırın, sonra tekrar indirin.\nBacaklarınızı aynı anda kaldırmak zor gelirse, teker teker kaldırabilirsiniz.',
+                    'Ayaklarınızı omuz genişliğinde açın ve ellerinizi belinizde tutun veya bir yüzeye tutunun.\nAyaklarınızın ön kısmına ağırlığınızı aktararak ayak parmaklarınıza kalkın ve topuklarınızı yere bastırın.\nBirkaç saniye yukarıda kalın ve yavaşça geri dönün.\nTek bacakla da tekrarlayabilirsiniz.',
+                    'Her egzersizden sonra kısa bir dinlenme süresi vermek uygun olacaktır.\n\nHer egzersiz için 2-3 set ve 8-10 tekrar hedefleyebilirsiniz. Eğer tekrar sayıları sizin için çok kolaysa, ağırlığı artırarak zorluk seviyesini yükseltebilirsiniz.\n\nBir sağlık uzmanına danışmak her zaman önemlidir.'
                   ],
                   imagePaths: [
-                    'assets/plan_image_9.png',
-                    'assets/plan_image_10.png',
-                    'assets/plan_image_11.png'
+                    'assets/planvo1.jpg',
+                    'assets/planvo2.jpg',
+                    'assets/planvo3.jpg',
+                    'assets/planvo4.jpg',
+                    'assets/planvo5.jpg',
+                    'assets/careful.jpg'
+                  ],
+                  planTitles: [
+                    'Chair Squats \n(Sandalyede Çömelme)',
+                    'Wall Push-Ups \n(Duvarda Şınav)',
+                    'Marching in Place \n(Yerinde Yürüme)',
+                    'Seated Leg Raises \n(Oturarak Bacak Kaldırma)',
+                    'Calf Raises \n(Ayak Parmağında Kalkma)',
+                    'Öneri'
                   ],
                 ),
               ),
@@ -135,8 +194,8 @@ class ExerciseHomePage extends StatelessWidget {
           },
           child: ExerciseCard(
             imagePath: 'assets/veryoldexercise.png',
-            title: '   50 - 65 Yaş Aralığı',
-            description: '\n      Egzersiz Planları',
+            title: '50 - 65 Yaş Aralığı',
+            description: '\n     Egzersiz Planları',
           ),
         ),
       ],
@@ -172,7 +231,7 @@ class ExerciseCard extends StatelessWidget {
                   Text(
                     title,
                     style: TextStyle(
-                        fontSize: 20.0,
+                        fontSize: 22.0,
                         fontWeight: FontWeight.bold,
                         color: Colors.black),
                   ),
@@ -180,9 +239,9 @@ class ExerciseCard extends StatelessWidget {
                   Text(
                     description,
                     style: TextStyle(
-                        fontSize: 16.0,
+                        fontSize: 18.0,
                         fontWeight: FontWeight.bold,
-                        color: Colors.deepOrange),
+                        color: Colors.black),
                   ),
                 ],
               ),
