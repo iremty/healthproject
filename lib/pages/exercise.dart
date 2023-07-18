@@ -143,7 +143,7 @@ class ExerciseHomePage extends StatelessWidget {
                     'Dumbbell Shoulder Press \n(Dambıl Omuz Presi)',
                     'Glute Bridge March \n(Glute Köprüsü Yürüyüşü)',
                     'Chair Yoga \n(Sandalyede Yoga)',
-                    'Bird-Dog \n(Av Köpeği Duruşu',
+                    'Bird-Dog \n(Av Köpeği Duruşu)',
                     'Öneri'
                   ],
                 ),
